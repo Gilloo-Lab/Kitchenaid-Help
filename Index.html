@@ -1,0 +1,1263 @@
+<!DOCTYPE html><html lang="fr"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistant Réparation KitchenAid</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+    <style>
+        :root {
+            --primary-color: #5D5CDE;
+            --primary-dark: #4b4ab2;
+            --kitchenaid-red: #C41230;
+            --kitchenaid-black: #231F20;
+            --kitchenaid-light: #F8F5F2;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #181818;
+                --text-color: #F8F5F2;
+                --card-bg: #2d2d2d;
+                --border-color: #3d3d3d;
+            }
+        }
+        
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-color: #FFFFFF;
+                --text-color: #231F20;
+                --card-bg: #F8F5F2;
+                --border-color: #e5e5e5;
+            }
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background-color: var(--kitchenaid-red);
+            color: white;
+            transition: background-color 0.2s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #a30f27;
+        }
+        
+        .btn-secondary {
+            background-color: var(--primary-color);
+            color: white;
+            transition: background-color 0.2s;
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .symptom-checkbox:checked + label {
+            border-color: var(--kitchenaid-red);
+            background-color: rgba(196, 18, 48, 0.1);
+        }
+        
+        .step {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeIn 0.5s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .loading-spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--kitchenaid-red);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            .loading-spinner {
+                border: 4px solid rgba(255, 255, 255, 0.1);
+                border-top: 4px solid var(--kitchenaid-red);
+            }
+        }
+        
+        .model-image {
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold mb-2" style="color: var(--kitchenaid-red);">Assistant Réparation KitchenAid</h1>
+            <p class="text-lg">Diagnostiquez et réparez votre robot de cuisine</p>
+        </header>
+
+        <main>
+            <!-- Step 1: Select Model -->
+            <div id="step-model" class="step mb-8">
+                <h2 class="text-2xl font-semibold mb-4">Étape 1: Choisissez votre modèle</h2>
+                
+                <div class="mb-6 text-center">
+                    <button id="view-faq-from-home" class="inline-flex items-center px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-800 transition-colors dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        Questions fréquentes (FAQ)
+                    </button>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="card p-4 cursor-pointer model-card" data-model="artisan">
+                        <div class="svg-container" style="height: 150px;">
+                            <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" class="model-image">
+                                <path d="M80,130 L120,130 L125,50 L115,40 C115,40 105,35 100,35 C95,35 85,40 85,40 L75,50 Z" fill="#ccc" stroke="#333" stroke-width="2"></path>
+                                <ellipse cx="100" cy="35" rx="20" ry="5" fill="#ddd" stroke="#333" stroke-width="1"></ellipse>
+                                <path d="M75,50 C60,60 60,80 80,100" fill="none" stroke="#333" stroke-width="2"></path>
+                                <path d="M125,50 C140,60 140,80 120,100" fill="none" stroke="#333" stroke-width="2"></path>
+                                <rect x="85" y="80" width="30" height="20" rx="5" fill="#eee" stroke="#333" stroke-width="1"></rect>
+                                <circle cx="130" cy="70" r="10" fill="#ddd" stroke="#333" stroke-width="1"></circle>
+                                <path d="M130,60 L135,40 L145,40 L140,60 Z" fill="#ddd" stroke="#333" stroke-width="1"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-medium text-center mt-2">Artisan</h3>
+                        <p class="text-sm text-center opacity-75">Série 5KSM</p>
+                    </div>
+                    <div class="card p-4 cursor-pointer model-card" data-model="classic">
+                        <div class="svg-container" style="height: 150px;">
+                            <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" class="model-image">
+                                <path d="M85,130 L115,130 L120,55 L110,45 C110,45 105,40 100,40 C95,40 90,45 90,45 L80,55 Z" fill="#ccc" stroke="#333" stroke-width="2"></path>
+                                <ellipse cx="100" cy="40" rx="15" ry="4" fill="#ddd" stroke="#333" stroke-width="1"></ellipse>
+                                <path d="M80,55 C65,65 65,85 85,105" fill="none" stroke="#333" stroke-width="2"></path>
+                                <path d="M120,55 C135,65 135,85 115,105" fill="none" stroke="#333" stroke-width="2"></path>
+                                <rect x="90" y="85" width="20" height="15" rx="4" fill="#eee" stroke="#333" stroke-width="1"></rect>
+                                <circle cx="125" cy="75" r="8" fill="#ddd" stroke="#333" stroke-width="1"></circle>
+                                <path d="M125,67 L130,47 L135,47 L130,67 Z" fill="#ddd" stroke="#333" stroke-width="1"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-medium text-center mt-2">Classic</h3>
+                        <p class="text-sm text-center opacity-75">Série K45</p>
+                    </div>
+                    <div class="card p-4 cursor-pointer model-card" data-model="heavy-duty">
+                        <div class="svg-container" style="height: 150px;">
+                            <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" class="model-image">
+                                <path d="M75,130 L125,130 L130,45 L120,35 C120,35 110,30 100,30 C90,30 80,35 80,35 L70,45 Z" fill="#ccc" stroke="#333" stroke-width="2"></path>
+                                <ellipse cx="100" cy="30" rx="25" ry="6" fill="#ddd" stroke="#333" stroke-width="1"></ellipse>
+                                <path d="M70,45 C55,55 55,75 75,95" fill="none" stroke="#333" stroke-width="2"></path>
+                                <path d="M130,45 C145,55 145,75 125,95" fill="none" stroke="#333" stroke-width="2"></path>
+                                <rect x="80" y="75" width="40" height="25" rx="6" fill="#eee" stroke="#333" stroke-width="1"></rect>
+                                <circle cx="135" cy="65" r="12" fill="#ddd" stroke="#333" stroke-width="1"></circle>
+                                <path d="M135,53 L140,33 L150,33 L145,53 Z" fill="#ddd" stroke="#333" stroke-width="1"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-medium text-center mt-2">Heavy Duty</h3>
+                        <p class="text-sm text-center opacity-75">Série 5KPM</p>
+                    </div>
+                    
+                    <!-- Nouveau modèle: Mini -->
+                    <div class="card p-4 cursor-pointer model-card" data-model="mini">
+                        <div class="svg-container" style="height: 150px;">
+                            <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" class="model-image">
+                                <path d="M90,130 L110,130 L115,65 L105,55 C105,55 102,50 100,50 C98,50 95,55 95,55 L85,65 Z" fill="#ccc" stroke="#333" stroke-width="2"></path>
+                                <ellipse cx="100" cy="50" rx="12" ry="3" fill="#ddd" stroke="#333" stroke-width="1"></ellipse>
+                                <path d="M85,65 C75,75 75,90 90,110" fill="none" stroke="#333" stroke-width="2"></path>
+                                <path d="M115,65 C125,75 125,90 110,110" fill="none" stroke="#333" stroke-width="2"></path>
+                                <rect x="92" y="95" width="16" height="12" rx="3" fill="#eee" stroke="#333" stroke-width="1"></rect>
+                                <circle cx="118" cy="85" r="6" fill="#ddd" stroke="#333" stroke-width="1"></circle>
+                                <path d="M118,79 L122,62 L126,62 L122,79 Z" fill="#ddd" stroke="#333" stroke-width="1"></path>
+                                <!-- Indicateur de taille -->
+                                <path d="M140,70 L140,110" fill="none" stroke="#666" stroke-width="1" stroke-dasharray="2,1"></path>
+                                <text x="150" y="90" font-size="10" text-anchor="middle" fill="currentColor">Compact</text>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-medium text-center mt-2">Mini</h3>
+                        <p class="text-sm text-center opacity-75">Série 5KSM3311X</p>
+                    </div>
+                    
+                    <!-- Nouveau modèle: Professional -->
+                    <div class="card p-4 cursor-pointer model-card" data-model="professional">
+                        <div class="svg-container" style="height: 150px;">
+                            <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" class="model-image">
+                                <path d="M70,130 L130,130 L135,40 L125,30 C125,30 110,25 100,25 C90,25 75,30 75,30 L65,40 Z" fill="#ccc" stroke="#333" stroke-width="2"></path>
+                                <ellipse cx="100" cy="25" rx="28" ry="7" fill="#ddd" stroke="#333" stroke-width="1"></ellipse>
+                                <path d="M65,40 C50,50 50,70 70,95" fill="none" stroke="#333" stroke-width="2"></path>
+                                <path d="M135,40 C150,50 150,70 130,95" fill="none" stroke="#333" stroke-width="2"></path>
+                                <rect x="75" y="70" width="50" height="30" rx="8" fill="#eee" stroke="#333" stroke-width="1"></rect>
+                                <circle cx="138" cy="60" r="14" fill="#ddd" stroke="#333" stroke-width="1"></circle>
+                                <path d="M138,46 L145,26 L155,26 L148,46 Z" fill="#ddd" stroke="#333" stroke-width="1"></path>
+                                <!-- Indicateur Pro -->
+                                <circle cx="165" cy="40" r="10" fill="#C41230" stroke="#333"></circle>
+                                <text x="165" y="43" font-size="8" fill="white" text-anchor="middle">PRO</text>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-medium text-center mt-2">Professional</h3>
+                        <p class="text-sm text-center opacity-75">Série 5KSM7990X</p>
+                    </div>
+                    
+                    <!-- Nouveau modèle: Commercial -->
+                    <div class="card p-4 cursor-pointer model-card" data-model="commercial">
+                        <div class="svg-container" style="height: 150px;">
+                            <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" class="model-image">
+                                <path d="M65,130 L135,130 L140,35 L130,25 C130,25 115,20 100,20 C85,20 70,25 70,25 L60,35 Z" fill="#aaa" stroke="#333" stroke-width="2"></path>
+                                <ellipse cx="100" cy="20" rx="30" ry="8" fill="#bbb" stroke="#333" stroke-width="1"></ellipse>
+                                <path d="M60,35 C45,45 45,65 65,90" fill="none" stroke="#333" stroke-width="2"></path>
+                                <path d="M140,35 C155,45 155,65 135,90" fill="none" stroke="#333" stroke-width="2"></path>
+                                <rect x="70" y="65" width="60" height="35" rx="10" fill="#ccc" stroke="#333" stroke-width="1"></rect>
+                                <circle cx="143" cy="55" r="16" fill="#bbb" stroke="#333" stroke-width="1"></circle>
+                                <path d="M143,39 L150,19 L160,19 L153,39 Z" fill="#bbb" stroke="#333" stroke-width="1"></path>
+                                <!-- Base renforcée -->
+                                <rect x="75" y="120" width="50" height="10" rx="2" fill="#888" stroke="#333"></rect>
+                                <text x="165" y="70" font-size="10" fill="currentColor" text-anchor="middle">Usage</text>
+                                <text x="165" y="82" font-size="10" fill="currentColor" text-anchor="middle">intensif</text>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-medium text-center mt-2">Commercial</h3>
+                        <p class="text-sm text-center opacity-75">Série 8QC</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Select Symptoms -->
+            <div id="step-symptoms" class="step mb-8 hidden">
+                <h2 class="text-2xl font-semibold mb-4">Étape 2: Quels symptômes constatez-vous?</h2>
+                <p class="mb-4">Sélectionnez tous les symptômes que vous observez :</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div class="relative">
+                        <input type="checkbox" id="symptom1" class="hidden symptom-checkbox" value="bruit-anormal">
+                        <label for="symptom1" class="card p-4 flex items-center cursor-pointer border-2 border-transparent">
+                            <span class="flex-1">Bruits anormaux (grincements, cliquetis)</span>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input type="checkbox" id="symptom2" class="hidden symptom-checkbox" value="ne-demarre-pas">
+                        <label for="symptom2" class="card p-4 flex items-center cursor-pointer border-2 border-transparent">
+                            <span class="flex-1">Le robot ne démarre pas</span>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input type="checkbox" id="symptom3" class="hidden symptom-checkbox" value="tete-instable">
+                        <label for="symptom3" class="card p-4 flex items-center cursor-pointer border-2 border-transparent">
+                            <span class="flex-1">La tête du robot est instable ou tombe</span>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input type="checkbox" id="symptom4" class="hidden symptom-checkbox" value="accessoire-ne-tourne-pas">
+                        <label for="symptom4" class="card p-4 flex items-center cursor-pointer border-2 border-transparent">
+                            <span class="flex-1">L'accessoire ne tourne pas correctement</span>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input type="checkbox" id="symptom5" class="hidden symptom-checkbox" value="surchauffe">
+                        <label for="symptom5" class="card p-4 flex items-center cursor-pointer border-2 border-transparent">
+                            <span class="flex-1">Surchauffe du moteur</span>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input type="checkbox" id="symptom6" class="hidden symptom-checkbox" value="fuite-huile">
+                        <label for="symptom6" class="card p-4 flex items-center cursor-pointer border-2 border-transparent">
+                            <span class="flex-1">Fuite d'huile</span>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input type="checkbox" id="symptom7" class="hidden symptom-checkbox" value="vitesse-irreguliere">
+                        <label for="symptom7" class="card p-4 flex items-center cursor-pointer border-2 border-transparent">
+                            <span class="flex-1">Vitesse irrégulière</span>
+                        </label>
+                    </div>
+                    <div class="relative">
+                        <input type="checkbox" id="symptom8" class="hidden symptom-checkbox" value="melange-inadequat">
+                        <label for="symptom8" class="card p-4 flex items-center cursor-pointer border-2 border-transparent">
+                            <span class="flex-1">Mélange inadéquat (ne mélange pas tous les ingrédients)</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between">
+                    <button id="back-to-model" class="btn-secondary px-6 py-2 rounded-lg">Retour</button>
+                    <button id="diagnose-button" class="btn-primary px-6 py-2 rounded-lg">Diagnostiquer</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Diagnosis Results -->
+            <div id="step-diagnosis" class="step mb-8 hidden">
+                <h2 class="text-2xl font-semibold mb-4">Diagnostic de votre KitchenAid</h2>
+                
+                <div id="loading" class="text-center py-8 hidden">
+                    <div class="loading-spinner"></div>
+                    <p class="mt-4">Analyse en cours...</p>
+                </div>
+                
+                <div id="diagnosis-result" class="card p-6">
+                    <h3 class="text-xl font-medium mb-3">Problème identifié:</h3>
+                    <p id="problem-description" class="mb-4"></p>
+                    
+                    <h3 class="text-xl font-medium mb-3">Guide de réparation:</h3>
+                    <div id="repair-steps" class="space-y-4">
+                        <!-- Steps will be inserted here -->
+                    </div>
+                    
+                    <div id="repair-image" class="mt-6">
+                        <!-- SVG illustration will be inserted here -->
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <button id="back-to-symptoms" class="btn-secondary px-6 py-2 rounded-lg">Modifier les symptômes</button>
+                    <button id="restart-button" class="btn-primary px-6 py-2 rounded-lg ml-4">Recommencer</button>
+                    <button id="view-faq-button" class="btn-secondary px-6 py-2 rounded-lg ml-4">Consulter la FAQ</button>
+                </div>
+            </div>
+            
+            <!-- Step 4: FAQ -->
+            <div id="step-faq" class="step mb-8 hidden">
+                <h2 class="text-2xl font-semibold mb-4">Questions fréquentes (FAQ)</h2>
+                
+                <div class="mb-4">
+                    <p class="mb-4">Retrouvez les réponses aux questions les plus fréquentes sur les robots KitchenAid :</p>
+                </div>
+                
+                <div class="space-y-4 mb-6">
+                    <!-- FAQ Accordion -->
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Comment nettoyer correctement mon robot KitchenAid ?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <ol class="list-decimal pl-5 space-y-2">
+                                <li>Débranchez toujours votre robot avant de le nettoyer.</li>
+                                <li>Pour le corps du robot, utilisez un chiffon doux humide avec un peu de savon doux. N'immergez jamais le robot dans l'eau.</li>
+                                <li>Le bol en acier inoxydable, le fouet, le crochet pétrisseur et le batteur plat peuvent être lavés au lave-vaisselle (panier supérieur recommandé).</li>
+                                <li>Pour les taches tenaces sur le bol, utilisez un nettoyant doux non abrasif.</li>
+                                <li>N'utilisez jamais de nettoyants abrasifs, de tampons à récurer ou de laine d'acier sur votre robot.</li>
+                                <li>Pour les accessoires avec revêtement, évitez le lave-vaisselle et lavez-les à la main pour préserver leur durabilité.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Quelle est la durée de vie moyenne d'un robot KitchenAid ?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <p>Les robots KitchenAid sont connus pour leur durabilité exceptionnelle. Avec un entretien approprié, ils peuvent facilement durer 15 à 30 ans, voire plus. De nombreux utilisateurs possèdent des robots KitchenAid qui fonctionnent encore parfaitement après plusieurs décennies. La conception robuste avec des engrenages en métal et des moteurs puissants contribue à cette longévité.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Mon robot fait un bruit de cliquetis, est-ce normal ?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <p class="mb-3">Un léger bruit de cliquetis peut être normal, surtout lors du démarrage ou du changement de vitesse. Cependant, un bruit fort ou persistant indique généralement un problème :</p>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Vérifiez si un accessoire touche le bol. Ajustez la hauteur du batteur si nécessaire.</li>
+                                <li>Assurez-vous que le bol est correctement verrouillé en place.</li>
+                                <li>Des engrenages usés peuvent causer un bruit métallique. Dans ce cas, une lubrification ou un remplacement peut être nécessaire.</li>
+                                <li>Si le robot est ancien ou peu utilisé, un léger bruit initial peut être normal et disparaître après quelques utilisations.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Comment régler la hauteur du batteur ?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <ol class="list-decimal pl-5 space-y-2">
+                                <li>Débranchez d'abord votre robot KitchenAid.</li>
+                                <li>Inclinez la tête du robot vers l'arrière ou relevez le bol (selon votre modèle).</li>
+                                <li>Trouvez la vis de réglage de la hauteur. Sur la plupart des modèles, elle est située à la base de la tête du robot, là où elle se connecte au socle.</li>
+                                <li>Pour abaisser le batteur (le rapprocher du bol), tournez la vis de réglage dans le sens horaire.</li>
+                                <li>Pour élever le batteur (l'éloigner du bol), tournez la vis dans le sens antihoraire.</li>
+                                <li>Le réglage idéal est lorsque le batteur plat peut passer juste au-dessus du fond du bol sans le toucher. Utilisez une pièce de monnaie comme jauge : le batteur devrait tout juste passer au-dessus d'une pièce placée au fond du bol.</li>
+                                <li>Après l'ajustement, vérifiez en faisant fonctionner brièvement le robot à basse vitesse.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Quelle vitesse utiliser pour quelles préparations ?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Vitesse 1 (Remuer)</strong> : Démarrage de toutes les préparations, mélange lent d'ingrédients secs, ajout d'ingrédients pendant le mélange.</li>
+                                <li><strong>Vitesse 2 (Mélanger lentement)</strong> : Mélange lent de pâtes épaisses, pétrissage des pâtes à levure, début d'écrasement de pommes de terre.</li>
+                                <li><strong>Vitesse 4 (Mélanger, Battre)</strong> : Mélange de pâtes moyennement épaisses, préparation de gâteaux et cookies.</li>
+                                <li><strong>Vitesse 6 (Battre, Crémer)</strong> : Battage à vitesse moyenne à élevée, crémage du beurre et du sucre.</li>
+                                <li><strong>Vitesse 8 (Battre rapidement)</strong> : Fouettage de crème, blancs d'œufs et glaçages bouillis.</li>
+                                <li><strong>Vitesse 10 (Fouetter rapidement)</strong> : Fouettage de petites quantités de crème et blancs d'œufs, finition des purées de pommes de terre.</li>
+                            </ul>
+                            <p class="mt-3"><em>Conseil</em> : Commencez toujours à la vitesse la plus basse puis augmentez progressivement pour éviter les éclaboussures.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Comment savoir si mon robot a besoin d'être lubrifié ?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <p class="mb-3">Les signes indiquant que votre robot KitchenAid a besoin d'être lubrifié sont :</p>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Bruit de grincement ou de crissement pendant le fonctionnement</li>
+                                <li>Fonctionnement plus difficile ou plus lent qu'auparavant</li>
+                                <li>Surchauffe inhabituelle</li>
+                                <li>Difficulté à changer de vitesse</li>
+                                <li>Odeur de brûlé ou d'huile surchauffée</li>
+                            </ul>
+                            <p class="mt-3">La lubrification est généralement recommandée tous les 2 à 5 ans selon l'utilisation. Pour les robots professionnels ou à usage intensif, une lubrification plus fréquente peut être nécessaire. Utilisez uniquement de la graisse alimentaire approuvée pour les robots KitchenAid.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <button id="back-from-faq" class="btn-secondary px-6 py-2 rounded-lg">Retour au diagnostic</button>
+                </div>
+            </div>
+                
+            <!-- Step 5: Additional Help -->
+            <div id="step-help" class="step mb-8 hidden">
+                <h2 class="text-2xl font-semibold mb-4">Besoin d'aide supplémentaire?</h2>
+                
+                <div class="card p-6 mb-6">
+                    <h3 class="text-xl font-medium mb-3">Contacter le service client KitchenAid</h3>
+                    <p class="mb-4">Si vous n'avez pas pu résoudre votre problème avec notre diagnostic, vous pouvez contacter le service client KitchenAid :</p>
+                    <p class="mb-2"><strong>Téléphone:</strong> 0800 600 120 (gratuit depuis un poste fixe)</p>
+                    <p class="mb-2"><strong>Email:</strong> service_client_kitchenaid@whirlpool.com</p>
+                    <p><strong>Site web:</strong> <a href="https://www.kitchenaid.fr/service-client" target="_blank" class="text-blue-600 hover:underline">www.kitchenaid.fr/service-client</a></p>
+                </div>
+                
+                <div class="card p-6">
+                    <h3 class="text-xl font-medium mb-3">Trouver un réparateur agréé</h3>
+                    <p class="mb-4">Localisez un centre de service près de chez vous :</p>
+                    <button id="find-repairer-button" class="btn-primary px-6 py-2 rounded-lg">Trouver un réparateur</button>
+                </div>
+                
+                <div class="mt-6">
+                    <button id="back-to-diagnosis" class="btn-secondary px-6 py-2 rounded-lg">Retour au diagnostic</button>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="mt-12 text-center">
+            <p class="text-sm opacity-75">© 2025 Assistant Réparation robots KitchenAid | Cet outil personnel, non agréé ou validé par la marque KitchenAid, est fourni exclusivement à titre informatif et sans aucune garantie de succès ni reconnaissance de responsabilité de la part de l'auteur. Si votre appareil est toujours sous garantie, contactez en priorité votre revendeur ou le fabricant. KitchenAid est une marque déposée.</p>
+            <p class="text-sm opacity-75 mt-1">Pour les réparations complexes, veuillez contacter un technicien qualifié.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Variables
+            const stepModel = document.getElementById('step-model');
+            const stepSymptoms = document.getElementById('step-symptoms');
+            const stepDiagnosis = document.getElementById('step-diagnosis');
+            const stepFaq = document.getElementById('step-faq');
+            const stepHelp = document.getElementById('step-help');
+            
+            const modelCards = document.querySelectorAll('.model-card');
+            const backToModelBtn = document.getElementById('back-to-model');
+            const diagnoseBtn = document.getElementById('diagnose-button');
+            const backToSymptomsBtn = document.getElementById('back-to-symptoms');
+            const restartBtn = document.getElementById('restart-button');
+            const backToDiagnosisBtn = document.getElementById('back-to-diagnosis');
+            const backFromFaqBtn = document.getElementById('back-from-faq');
+            const findRepairerBtn = document.getElementById('find-repairer-button');
+            
+            const loadingIndicator = document.getElementById('loading');
+            const diagnosisResult = document.getElementById('diagnosis-result');
+            const problemDescription = document.getElementById('problem-description');
+            const repairSteps = document.getElementById('repair-steps');
+            const repairImage = document.getElementById('repair-image');
+            
+            const symptomCheckboxes = document.querySelectorAll('.symptom-checkbox');
+            
+            // State
+            let selectedModel = '';
+            let selectedSymptoms = [];
+            
+            // Get FAQ elements
+            const faqButtons = document.querySelectorAll('.faq-btn');
+            const viewFaqButton = document.getElementById('view-faq-button');
+            const viewFaqFromHomeButton = document.getElementById('view-faq-from-home');
+            
+            // Initialize
+            function init() {
+                // Model selection
+                modelCards.forEach(card => {
+                    card.addEventListener('click', function() {
+                        selectedModel = this.dataset.model;
+                        modelCards.forEach(c => c.classList.remove('ring-2', 'ring-kitchenaid-red'));
+                        this.classList.add('ring-2', 'ring-kitchenaid-red');
+                        
+                        // Move to next step
+                        setTimeout(() => {
+                            stepModel.classList.add('hidden');
+                            stepSymptoms.classList.remove('hidden');
+                        }, 300);
+                    });
+                });
+                
+                // Symptom selection
+                symptomCheckboxes.forEach(checkbox => {
+                    checkbox.addEventListener('change', function() {
+                        if (this.checked) {
+                            if (!selectedSymptoms.includes(this.value)) {
+                                selectedSymptoms.push(this.value);
+                            }
+                        } else {
+                            const index = selectedSymptoms.indexOf(this.value);
+                            if (index > -1) {
+                                selectedSymptoms.splice(index, 1);
+                            }
+                        }
+                        
+                        // Enable diagnosis button if at least one symptom is selected
+                        diagnoseBtn.disabled = selectedSymptoms.length === 0;
+                        if (selectedSymptoms.length === 0) {
+                            diagnoseBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                        } else {
+                            diagnoseBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                        }
+                    });
+                });
+                
+                // Navigation buttons
+                backToModelBtn.addEventListener('click', function() {
+                    stepSymptoms.classList.add('hidden');
+                    stepModel.classList.remove('hidden');
+                });
+                
+                diagnoseBtn.addEventListener('click', function() {
+                    if (selectedSymptoms.length === 0) return;
+                    
+                    stepSymptoms.classList.add('hidden');
+                    stepDiagnosis.classList.remove('hidden');
+                    
+                    // Show loading indicator
+                    loadingIndicator.classList.remove('hidden');
+                    diagnosisResult.classList.add('hidden');
+                    
+                    // Simulate diagnosis (in a real app, this would be an API call)
+                    setTimeout(() => {
+                        performDiagnosis();
+                        loadingIndicator.classList.add('hidden');
+                        diagnosisResult.classList.remove('hidden');
+                    }, 1500);
+                });
+                
+                backToSymptomsBtn.addEventListener('click', function() {
+                    stepDiagnosis.classList.add('hidden');
+                    stepSymptoms.classList.remove('hidden');
+                });
+                
+                restartBtn.addEventListener('click', function() {
+                    resetApp();
+                });
+                
+                // FAQ buttons
+                viewFaqButton.addEventListener('click', function() {
+                    stepDiagnosis.classList.add('hidden');
+                    stepFaq.classList.remove('hidden');
+                });
+                
+                viewFaqFromHomeButton.addEventListener('click', function() {
+                    stepModel.classList.add('hidden');
+                    stepFaq.classList.remove('hidden');
+                });
+                
+                backFromFaqBtn.addEventListener('click', function() {
+                    stepFaq.classList.add('hidden');
+                    
+                    // Check where we came from and return there
+                    if (!stepDiagnosis.classList.contains('hidden')) {
+                        // Already visible, do nothing
+                    } else if (selectedModel) {
+                        // If we have a selected model, we were in diagnosis
+                        stepDiagnosis.classList.remove('hidden');
+                    } else {
+                        // Otherwise we came from home
+                        stepModel.classList.remove('hidden');
+                    }
+                });
+                
+                // FAQ accordion functionality
+                faqButtons.forEach(button => {
+                    button.addEventListener('click', function() {
+                        const content = this.nextElementSibling;
+                        const icon = this.querySelector('.faq-icon');
+                        
+                        // Toggle the active state
+                        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                        this.setAttribute('aria-expanded', !isExpanded);
+                        
+                        // Toggle content visibility
+                        if (isExpanded) {
+                            content.classList.add('hidden');
+                            icon.style.transform = 'rotate(0deg)';
+                        } else {
+                            content.classList.remove('hidden');
+                            icon.style.transform = 'rotate(180deg)';
+                        }
+                    });
+                });
+                
+                backToDiagnosisBtn.addEventListener('click', function() {
+                    stepHelp.classList.add('hidden');
+                    stepDiagnosis.classList.remove('hidden');
+                });
+                
+                findRepairerBtn.addEventListener('click', function() {
+                    // In a real app, this would open a map or search for repair centers
+                    window.open('https://www.kitchenaid.fr/service-client/trouver-un-reparateur', '_blank');
+                });
+                
+                // Disable diagnosis button initially
+                diagnoseBtn.disabled = true;
+                diagnoseBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            }
+            
+            // Reset the application
+            function resetApp() {
+                // Reset state
+                selectedModel = '';
+                selectedSymptoms = [];
+                
+                // Reset UI
+                modelCards.forEach(card => card.classList.remove('ring-2', 'ring-kitchenaid-red'));
+                symptomCheckboxes.forEach(checkbox => checkbox.checked = false);
+                
+                // Reset diagnosis
+                problemDescription.textContent = '';
+                repairSteps.innerHTML = '';
+                repairImage.innerHTML = '';
+                
+                // Navigate to first step
+                stepDiagnosis.classList.add('hidden');
+                stepHelp.classList.add('hidden');
+                stepSymptoms.classList.add('hidden');
+                stepFaq.classList.add('hidden');
+                stepModel.classList.remove('hidden');
+                
+                // Disable diagnosis button
+                diagnoseBtn.disabled = true;
+                diagnoseBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            }
+            
+            // Perform diagnosis based on model and symptoms
+            function performDiagnosis() {
+                // Problems database (simplified for demonstration)
+                const problems = {
+                    'bruit-anormal': {
+                        title: "Engrenages usés ou mal lubrifiés",
+                        description: "Les bruits anormaux comme les grincements ou cliquetis sont souvent causés par des engrenages usés ou mal lubrifiés.",
+                        solutions: [
+                            "Débranchez votre robot de cuisine.",
+                            "Retirez le couvercle supérieur en dévissant les vis de fixation.",
+                            "Inspectez les engrenages pour détecter tout signe d'usure ou de dommage.",
+                            "Appliquez une petite quantité de graisse alimentaire sur les engrenages.",
+                            "En cas d'engrenages très usés ou endommagés, ils devront être remplacés."
+                        ],
+                        illustration: createGearIllustration()
+                    },
+                    'ne-demarre-pas': {
+                        title: "Problème électrique",
+                        description: "Si votre robot ne démarre pas du tout, il peut s'agir d'un problème de connexion électrique, de fusible ou de commutateur.",
+                        solutions: [
+                            "Vérifiez que le robot est correctement branché à une prise fonctionnelle.",
+                            "Inspectez le cordon d'alimentation pour tout dommage visible.",
+                            "Vérifiez que la prise de courant fonctionne en y branchant un autre appareil.",
+                            "Assurez-vous que le bol est correctement installé (certains modèles ont un verrou de sécurité).",
+                            "Vérifiez le fusible interne du robot (consultez le manuel pour sa localisation)."
+                        ],
+                        illustration: createElectricalIllustration()
+                    },
+                    'tete-instable': {
+                        title: "Problème de verrouillage de la tête",
+                        description: "Si la tête de votre robot est instable ou tombe pendant l'utilisation, le mécanisme de verrouillage peut être endommagé ou mal ajusté.",
+                        solutions: [
+                            "Débranchez le robot de cuisine.",
+                            "Identifiez la vis de réglage de la hauteur de la tête (généralement située à la base de la tête du robot).",
+                            "À l'aide d'un tournevis plat, tournez légèrement la vis de réglage dans le sens horaire pour abaisser la tête ou dans le sens antihoraire pour l'élever.",
+                            "Testez le verrouillage après chaque ajustement jusqu'à ce que la tête se verrouille correctement.",
+                            "Si le problème persiste, le mécanisme de verrouillage peut nécessiter un remplacement."
+                        ],
+                        illustration: createHeadLockIllustration()
+                    },
+                    'accessoire-ne-tourne-pas': {
+                        title: "Problème d'engrenage ou de fixation",
+                        description: "Si l'accessoire ne tourne pas correctement, cela peut être dû à un problème d'engrenage ou à une mauvaise fixation.",
+                        solutions: [
+                            "Vérifiez que l'accessoire est correctement fixé au moyeu.",
+                            "Inspectez l'accessoire pour tout dommage visible.",
+                            "Retirez puis réinstallez l'accessoire en vous assurant qu'il est bien enclenché.",
+                            "Vérifiez le moyeu pour tout signe de dommage ou d'obstruction.",
+                            "Si le problème persiste, le mécanisme d'entraînement interne peut être endommagé."
+                        ],
+                        illustration: createAttachmentIllustration()
+                    },
+                    'surchauffe': {
+                        title: "Problème de moteur ou usage excessif",
+                        description: "La surchauffe peut être causée par une utilisation trop longue ou intensive, ou par un problème du moteur.",
+                        solutions: [
+                            "Éteignez immédiatement le robot et débranchez-le.",
+                            "Laissez-le refroidir complètement pendant au moins 30 minutes.",
+                            "Assurez-vous que les évents de ventilation ne sont pas obstrués.",
+                            "Réduisez la quantité d'ingrédients traités en une seule fois.",
+                            "Évitez de faire fonctionner le robot à haute vitesse pendant de longues périodes."
+                        ],
+                        illustration: createOverheatingIllustration()
+                    },
+                    'fuite-huile': {
+                        title: "Joints d'étanchéité défectueux",
+                        description: "Les fuites d'huile sont généralement causées par des joints d'étanchéité usés ou défectueux.",
+                        solutions: [
+                            "Débranchez le robot et placez-le sur une surface protégée.",
+                            "Retirez le couvercle arrière en dévissant les vis de fixation.",
+                            "Identifiez la source de la fuite d'huile.",
+                            "Remplacez les joints d'étanchéité endommagés (disponibles dans les kits de réparation).",
+                            "Vérifiez le niveau d'huile et ajoutez de l'huile pour engrenages si nécessaire."
+                        ],
+                        illustration: createOilLeakIllustration()
+                    },
+                    'vitesse-irreguliere': {
+                        title: "Problème du régulateur de vitesse",
+                        description: "Une vitesse irrégulière peut indiquer un problème avec le régulateur de vitesse ou les connexions électriques.",
+                        solutions: [
+                            "Débranchez le robot de cuisine.",
+                            "Vérifiez que le sélecteur de vitesse se déplace librement sans obstruction.",
+                            "Nettoyez le sélecteur de vitesse avec un chiffon sec.",
+                            "Vérifiez les connexions électriques internes si vous êtes à l'aise avec l'électronique.",
+                            "Le module de contrôle de vitesse peut nécessiter un remplacement si le problème persiste."
+                        ],
+                        illustration: createSpeedControlIllustration()
+                    },
+                    'melange-inadequat': {
+                        title: "Mauvais réglage de la hauteur du bol",
+                        description: "Si votre robot ne mélange pas tous les ingrédients, le bol peut être mal positionné ou l'accessoire mal réglé.",
+                        solutions: [
+                            "Éteignez et débranchez le robot.",
+                            "Vérifiez que le bol est correctement positionné et verrouillé.",
+                            "Ajustez la hauteur du bol en tournant la vis de réglage située sous le robot.",
+                            "Vérifiez l'état de l'accessoire pour tout signe de dommage ou d'usure.",
+                            "Testez avec différents accessoires pour déterminer si le problème est spécifique à un accessoire."
+                        ],
+                        illustration: createBowlHeightIllustration()
+                    }
+                };
+                
+                // Determine the most likely problem based on symptoms
+                let mainProblem = null;
+                if (selectedSymptoms.length === 1) {
+                    // If only one symptom, use that one
+                    mainProblem = problems[selectedSymptoms[0]];
+                } else {
+                    // Priority order (simplified for demo)
+                    const prioritySymptoms = [
+                        'ne-demarre-pas',
+                        'surchauffe',
+                        'bruit-anormal',
+                        'fuite-huile',
+                        'tete-instable',
+                        'accessoire-ne-tourne-pas',
+                        'vitesse-irreguliere',
+                        'melange-inadequat'
+                    ];
+                    
+                    // Find the highest priority symptom from selected ones
+                    for (const symptom of prioritySymptoms) {
+                        if (selectedSymptoms.includes(symptom)) {
+                            mainProblem = problems[symptom];
+                            break;
+                        }
+                    }
+                }
+                
+                // If no problem found (shouldn't happen), use a default
+                if (!mainProblem) {
+                    mainProblem = {
+                        title: "Problème indéterminé",
+                        description: "Nous n'avons pas pu identifier précisément votre problème avec les symptômes décrits.",
+                        solutions: [
+                            "Contactez le service client KitchenAid pour obtenir une assistance spécialisée.",
+                            "Consultez le manuel d'utilisation pour des informations supplémentaires.",
+                            "Envisagez de consulter un réparateur agréé."
+                        ],
+                        illustration: createGenericIllustration()
+                    };
+                }
+                
+                // Display the diagnosis
+                problemDescription.innerHTML = `<strong>${mainProblem.title}:</strong> ${mainProblem.description}`;
+                
+                // Display repair steps
+                repairSteps.innerHTML = '';
+                mainProblem.solutions.forEach((step, index) => {
+                    const stepElement = document.createElement('div');
+                    stepElement.className = 'flex items-start';
+                    stepElement.innerHTML = `
+                        <div class="flex-shrink-0 bg-kitchenaid-red text-white rounded-full w-6 h-6 flex items-center justify-center mr-3">
+                            ${index + 1}
+                        </div>
+                        <p>${step}</p>
+                    `;
+                    
+                    // Add animation delay for steps
+                    stepElement.style.animation = `fadeIn 0.5s ${index * 0.1}s forwards`;
+                    stepElement.style.opacity = '0';
+                    
+                    repairSteps.appendChild(stepElement);
+                });
+                
+                // Add illustration
+                repairImage.innerHTML = '';
+                if (mainProblem.illustration) {
+                    repairImage.appendChild(mainProblem.illustration);
+                }
+            }
+            
+            // Illustration functions for different problems
+            function createGearIllustration() {
+                const svgContainer = document.createElement('div');
+                svgContainer.innerHTML = `
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-md mx-auto">
+                        <circle cx="100" cy="100" r="40" fill="#ddd" stroke="#666" stroke-width="2"/>
+                        <circle cx="100" cy="100" r="35" fill="none" stroke="#888" stroke-width="1" stroke-dasharray="5,3"/>
+                        <circle cx="100" cy="100" r="10" fill="#999"/>
+                        <circle cx="200" cy="100" r="30" fill="#ddd" stroke="#666" stroke-width="2"/>
+                        <circle cx="200" cy="100" r="25" fill="none" stroke="#888" stroke-width="1" stroke-dasharray="5,3"/>
+                        <circle cx="200" cy="100" r="8" fill="#999"/>
+                        
+                        <!-- Gear teeth for large gear -->
+                        ${Array.from({length: 12}, (_, i) => {
+                            const angle = i * 30 * Math.PI / 180;
+                            const x1 = 100 + 38 * Math.cos(angle);
+                            const y1 = 100 + 38 * Math.sin(angle);
+                            const x2 = 100 + 45 * Math.cos(angle);
+                            const y2 = 100 + 45 * Math.sin(angle);
+                            return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#666" stroke-width="3"/>`;
+                        }).join('')}
+                        
+                        <!-- Gear teeth for small gear -->
+                        ${Array.from({length: 9}, (_, i) => {
+                            const angle = i * 40 * Math.PI / 180;
+                            const x1 = 200 + 28 * Math.cos(angle);
+                            const y1 = 100 + 28 * Math.sin(angle);
+                            const x2 = 200 + 34 * Math.cos(angle);
+                            const y2 = 100 + 34 * Math.sin(angle);
+                            return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#666" stroke-width="3"/>`;
+                        }).join('')}
+                        
+                        <!-- Grease indicator -->
+                        <circle cx="150" cy="100" r="10" fill="#FFCC00" opacity="0.7">
+                            <animate attributeName="opacity" values="0.7;0.2;0.7" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <text x="150" y="170" text-anchor="middle" font-size="14" fill="currentColor">Appliquez de la graisse ici</text>
+                        <path d="M150,115 L150,140" stroke="currentColor" stroke-width="1" stroke-dasharray="3,2"/>
+                    </svg>
+                `;
+                return svgContainer;
+            }
+            
+            function createElectricalIllustration() {
+                const svgContainer = document.createElement('div');
+                svgContainer.innerHTML = `
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-md mx-auto">
+                        <!-- Power cord -->
+                        <path d="M50,150 C70,160 90,140 110,150 C130,160 150,140 170,150 C190,160 210,140 230,150 L250,150" 
+                              fill="none" stroke="#333" stroke-width="4"/>
+                        
+                        <!-- Plug -->
+                        <rect x="250" y="140" width="30" height="20" rx="2" fill="#555"/>
+                        <rect x="280" y="145" width="10" height="10" rx="1" fill="#777"/>
+                        
+                        <!-- Socket -->
+                        <rect x="20" y="140" width="30" height="20" rx="2" fill="#ddd" stroke="#333"/>
+                        <circle cx="30" cy="150" r="5" fill="#666"/>
+                        <circle cx="40" cy="150" r="5" fill="#666"/>
+                        
+                        <!-- Mixer Body (simplified) -->
+                        <rect x="100" y="50" width="100" height="70" rx="10" fill="#ddd" stroke="#555" stroke-width="2"/>
+                        
+                        <!-- Control panel -->
+                        <rect x="120" y="60" width="60" height="20" rx="3" fill="#eee" stroke="#777"/>
+                        <circle cx="135" cy="70" r="7" fill="#ccc" stroke="#666"/>
+                        <line x1="128" y1="70" x2="142" y2="70" stroke="#666" stroke-width="1"/>
+                        <text x="160" y="75" font-size="10" fill="#444">OFF</text>
+                        
+                        <!-- Warning indicators -->
+                        <circle cx="75" cy="70" r="15" fill="#ff6b6b">
+                            <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" />
+                        </circle>
+                        <text x="75" y="74" text-anchor="middle" font-size="12" fill="white" font-weight="bold">!</text>
+                        <text x="75" y="95" text-anchor="middle" font-size="10" fill="currentColor">Vérifiez le</text>
+                        <text x="75" y="108" text-anchor="middle" font-size="10" fill="currentColor">branchement</text>
+                        
+                        <circle cx="225" cy="70" r="15" fill="#ffcc5c">
+                            <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" />
+                        </circle>
+                        <text x="225" y="74" text-anchor="middle" font-size="12" fill="white" font-weight="bold">F</text>
+                        <text x="225" y="95" text-anchor="middle" font-size="10" fill="currentColor">Vérifiez le</text>
+                        <text x="225" y="108" text-anchor="middle" font-size="10" fill="currentColor">fusible</text>
+                    </svg>
+                `;
+                return svgContainer;
+            }
+            
+            function createHeadLockIllustration() {
+                const svgContainer = document.createElement('div');
+                svgContainer.innerHTML = `
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-md mx-auto">
+                        <!-- Mixer base -->
+                        <rect x="75" y="150" width="150" height="30" rx="5" fill="#ddd" stroke="#666" stroke-width="2"/>
+                        
+                        <!-- Mixer column -->
+                        <rect x="125" y="80" width="50" height="70" fill="#ccc" stroke="#666" stroke-width="2"/>
+                        
+                        <!-- Mixer head -->
+                        <path d="M100,80 L200,80 L180,50 L120,50 Z" fill="#eee" stroke="#666" stroke-width="2"/>
+                        
+                        <!-- Lock mechanism -->
+                        <circle cx="150" cy="85" r="10" fill="#ff6b6b" stroke="#333"/>
+                        <rect x="145" y="75" width="10" height="20" fill="#ff6b6b" stroke="#333" rx="2">
+                            <animateTransform attributeName="transform" type="rotate" from="0 150 85" to="15 150 85" dur="2s" repeatCount="indefinite" />
+                        </rect>
+                        
+                        <!-- Adjustment screw -->
+                        <circle cx="150" cy="120" r="8" fill="#aaa" stroke="#666"/>
+                        <line x1="146" y1="116" x2="154" y2="124" stroke="#666" stroke-width="2"/>
+                        <line x1="146" y1="124" x2="154" y2="116" stroke="#666" stroke-width="2"/>
+                        
+                        <!-- Indicator -->
+                        <path d="M170,120 L190,120 L195,125 L190,130 L170,130 Z" fill="#ffcc5c"/>
+                        <text x="180" y="127" text-anchor="middle" font-size="8" fill="#333">AJUSTER</text>
+                        <line x1="158" y1="120" x2="170" y2="120" stroke="#666" stroke-width="1" stroke-dasharray="2,1"/>
+                        
+                        <!-- Instructions -->
+                        <text x="150" y="170" text-anchor="middle" font-size="10" fill="currentColor">Tourner la vis d'ajustement pour régler la hauteur</text>
+                        <path d="M150,130 L150,155" stroke="currentColor" stroke-width="1" stroke-dasharray="3,2"/>
+                    </svg>
+                `;
+                return svgContainer;
+            }
+            
+            function createAttachmentIllustration() {
+                const svgContainer = document.createElement('div');
+                svgContainer.innerHTML = `
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-md mx-auto">
+                        <!-- Mixer head (partial) -->
+                        <path d="M100,60 L200,60 L180,30 L120,30 Z" fill="#eee" stroke="#666" stroke-width="2"/>
+                        
+                        <!-- Attachment hub -->
+                        <circle cx="120" cy="70" r="15" fill="#ccc" stroke="#666" stroke-width="2"/>
+                        <circle cx="120" cy="70" r="10" fill="#999" stroke="#666"/>
+                        <circle cx="120" cy="70" r="5" fill="#777"/>
+                        
+                        <!-- Attachment shaft -->
+                        <rect x="115" y="70" width="10" height="40" fill="#aaa" stroke="#666"/>
+                        
+                        <!-- Bowl -->
+                        <ellipse cx="150" cy="150" rx="70" ry="20" fill="#f5f5f5" stroke="#666"/>
+                        <path d="M80,150 C80,120 100,90 150,90 C200,90 220,120 220,150" fill="none" stroke="#666" stroke-width="2"/>
+                        
+                        <!-- Mixing attachment (whisk example) -->
+                        <line x1="120" y1="85" x2="120" y2="130" stroke="#888" stroke-width="3"/>
+                        
+                        <path d="M100,130 C110,120 115,110 120,130" fill="none" stroke="#888" stroke-width="2"/>
+                        <path d="M140,130 C130,120 125,110 120,130" fill="none" stroke="#888" stroke-width="2"/>
+                        
+                        <!-- Indicator showing attachment point -->
+                        <circle cx="120" cy="70" r="20" fill="transparent" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="3,2">
+                            <animate attributeName="r" values="20;25;20" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        
+                        <!-- Instructional notes -->
+                        <text x="120" y="25" text-anchor="middle" font-size="12" fill="currentColor">Point d'attache</text>
+                        <line x1="120" y1="30" x2="120" y2="50" stroke="currentColor" stroke-width="1" stroke-dasharray="2,1"/>
+                        
+                        <text x="210" y="80" text-anchor="middle" font-size="12" fill="currentColor">Vérifiez l'alignement</text>
+                        <path d="M170,80 C180,75 190,75 200,80" stroke="currentColor" stroke-width="1" marker-end="url(#arrow)" stroke-dasharray="2,1"/>
+                    </svg>
+                `;
+                return svgContainer;
+            }
+            
+            function createOverheatingIllustration() {
+                const svgContainer = document.createElement('div');
+                svgContainer.innerHTML = `
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-md mx-auto">
+                        <!-- Mixer body simplified -->
+                        <rect x="100" y="50" width="100" height="100" rx="10" fill="#ddd" stroke="#666" stroke-width="2"/>
+                        
+                        <!-- Motor representation -->
+                        <ellipse cx="150" cy="100" rx="30" ry="20" fill="#bbb" stroke="#666"/>
+                        <circle cx="150" cy="100" r="15" fill="#999" stroke="#666">
+                            <animateTransform attributeName="transform" type="rotate" from="0 150 100" to="360 150 100" dur="2s" repeatCount="indefinite" />
+                        </circle>
+                        <circle cx="150" cy="100" r="5" fill="#777"/>
+                        
+                        <!-- Ventilation holes -->
+                        ${Array.from({length: 5}, (_, i) => {
+                            return `<rect x="${110 + i*18}" y="60" width="8" height="3" rx="1" fill="#666"/>`;
+                        }).join('')}
+                        ${Array.from({length: 5}, (_, i) => {
+                            return `<rect x="${110 + i*18}" y="137" width="8" height="3" rx="1" fill="#666"/>`;
+                        }).join('')}
+                        
+                        <!-- Heat visualization -->
+                        <path d="M150,70 Q160,60 170,70 Q180,80 190,70" stroke="#ff6b6b" stroke-width="2" fill="none" opacity="0.8">
+                            <animate attributeName="d" values="M150,70 Q160,60 170,70 Q180,80 190,70;M150,65 Q160,75 170,65 Q180,55 190,65;M150,70 Q160,60 170,70 Q180,80 190,70" dur="3s" repeatCount="indefinite" />
+                            <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3s" repeatCount="indefinite" />
+                        </path>
+                        
+                        <path d="M110,70 Q120,60 130,70 Q140,80 150,70" stroke="#ff6b6b" stroke-width="2" fill="none" opacity="0.8">
+                            <animate attributeName="d" values="M110,70 Q120,60 130,70 Q140,80 150,70;M110,65 Q120,75 130,65 Q140,55 150,65;M110,70 Q120,60 130,70 Q140,80 150,70" dur="2.5s" repeatCount="indefinite" />
+                            <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2.5s" repeatCount="indefinite" />
+                        </path>
+                        
+                        <!-- Warning symbol -->
+                        <path d="M150,25 L170,45 L130,45 Z" fill="#ff6b6b" stroke="#333"/>
+                        <text x="150" y="40" text-anchor="middle" font-size="14" fill="white" font-weight="bold">!</text>
+                        
+                        <!-- Timer symbol -->
+                        <circle cx="240" cy="100" r="20" fill="#ffcc5c" stroke="#666" stroke-width="2"/>
+                        <text x="240" y="105" text-anchor="middle" font-size="18" fill="#333" font-weight="bold">30</text>
+                        <text x="240" y="130" text-anchor="middle" font-size="12" fill="currentColor">min</text>
+                        
+                        <!-- Instructions -->
+                        <text x="150" y="175" text-anchor="middle" font-size="12" fill="currentColor">Laissez refroidir 30 minutes</text>
+                    </svg>
+                `;
+                return svgContainer;
+            }
+            
+            function createOilLeakIllustration() {
+                const svgContainer = document.createElement('div');
+                svgContainer.innerHTML = `
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-md mx-auto">
+                        <!-- Mixer outline -->
+                        <rect x="100" y="50" width="100" height="100" rx="10" fill="#ddd" stroke="#666" stroke-width="2"/>
+                        
+                        <!-- Panel opening -->
+                        <rect x="110" y="60" width="80" height="80" rx="5" fill="#ccc" stroke="#666" stroke-width="1" stroke-dasharray="5,2"/>
+                        
+                        <!-- Gears inside -->
+                        <circle cx="140" cy="100" r="15" fill="#aaa" stroke="#666"/>
+                        <circle cx="140" cy="100" r="10" fill="none" stroke="#666" stroke-dasharray="2,1"/>
+                        <circle cx="140" cy="100" r="3" fill="#666"/>
+                        
+                        <circle cx="170" cy="100" r="10" fill="#aaa" stroke="#666"/>
+                        <circle cx="170" cy="100" r="7" fill="none" stroke="#666" stroke-dasharray="2,1"/>
+                        <circle cx="170" cy="100" r="2" fill="#666"/>
+                        
+                        <!-- Oil leak visualization -->
+                        <path d="M140,115 C140,125 150,135 140,145" fill="none" stroke="#F4D03F" stroke-width="2" opacity="0.8">
+                            <animate attributeName="d" values="M140,115 C140,125 150,135 140,145;M140,115 C135,128 145,138 140,145;M140,115 C140,125 150,135 140,145" dur="3s" repeatCount="indefinite" />
+                        </path>
+                        
+                        <path d="M140,145 L140,155" stroke="#F4D03F" stroke-width="3" opacity="0.8"/>
+                        
+                        <ellipse cx="140" cy="160" rx="5" ry="3" fill="#F4D03F" opacity="0.8">
+                            <animate attributeName="rx" values="5;7;5" dur="2s" repeatCount="indefinite" />
+                        </ellipse>
+                        
+                        <!-- Seal indicator -->
+                        <circle cx="155" cy="115" r="8" fill="#ff6b6b" stroke="#333" stroke-width="1"/>
+                        <text x="155" y="118" text-anchor="middle" font-size="10" fill="white">!</text>
+                        
+                        <path d="M155,115 L170,130" stroke="#666" stroke-width="1" stroke-dasharray="2,1"/>
+                        <text x="185" y="140" text-anchor="middle" font-size="10" fill="currentColor">Joint</text>
+                        <text x="185" y="152" text-anchor="middle" font-size="10" fill="currentColor">défectueux</text>
+                        
+                        <!-- Screwdriver icon -->
+                        <line x1="70" y1="70" x2="90" y2="90" stroke="#666" stroke-width="3"/>
+                        <rect x="65" y="65" width="10" height="7" rx="1" fill="#666"/>
+                        <text x="70" y="55" text-anchor="middle" font-size="10" fill="currentColor">Retirez</text>
+                        <text x="70" y="65" text-anchor="middle" font-size="10" fill="currentColor">le panneau</text>
+                    </svg>
+                `;
+                return svgContainer;
+            }
+            
+            function createSpeedControlIllustration() {
+                const svgContainer = document.createElement('div');
+                svgContainer.innerHTML = `
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-md mx-auto">
+                        <!-- Control panel outline -->
+                        <rect x="75" y="50" width="150" height="100" rx="10" fill="#eee" stroke="#666" stroke-width="2"/>
+                        
+                        <!-- Speed controller -->
+                        <circle cx="150" cy="100" r="40" fill="#ddd" stroke="#666" stroke-width="1"/>
+                        
+                        <!-- Speed numbers -->
+                        ${Array.from({length: 10}, (_, i) => {
+                            const angle = (i * 30 - 60) * Math.PI / 180;
+                            const x = 150 + 30 * Math.cos(angle);
+                            const y = 100 + 30 * Math.sin(angle);
+                            return `<text x="${x}" y="${y}" text-anchor="middle" dominant-baseline="middle" font-size="10" fill="#666">${i}</text>`;
+                        }).join('')}
+                        
+                        <!-- Speed lever -->
+                        <line x1="150" y1="100" x2="150" y2="70" stroke="#666" stroke-width="3">
+                            <animateTransform attributeName="transform" type="rotate" from="0 150 100" to="60 150 100" dur="1s" repeatCount="indefinite" values="0 150 100; 60 150 100; 50 150 100; 60 150 100" keyTimes="0; 0.4; 0.5; 1" />
+                        </line>
+                        <circle cx="150" cy="100" r="5" fill="#888"/>
+                        
+                        <!-- Controller module representation -->
+                        <rect x="100" y="150" width="100" height="20" rx="2" fill="#ccc" stroke="#666"/>
+                        <line x1="150" y1="120" x2="150" y2="150" stroke="#666" stroke-width="1" stroke-dasharray="3,2"/>
+                        
+                        <!-- Indicator -->
+                        <rect x="110" y="155" width="80" height="10" rx="2" fill="#bbb"/>
+                        ${Array.from({length: 8}, (_, i) => {
+                            return `<rect x="${114 + i*10}" y="157" width="6" height="6" rx="1" fill="${i % 2 === 0 ? '#32CD32' : '#666'}"/>`;
+                        }).join('')}
+                        
+                        <!-- Warning -->
+                        <path d="M230,100 L240,80 L220,80 Z" fill="#ff6b6b" stroke="#333"/>
+                        <text x="230" y="95" text-anchor="middle" font-size="10" fill="currentColor">Vitesse</text>
+                        <text x="230" y="107" text-anchor="middle" font-size="10" fill="currentColor">irrégulière</text>
+                        
+                        <!-- Connection visualization -->
+                        <path d="M150,170 C150,180 130,190 110,190" stroke="#ff6b6b" stroke-width="1" stroke-dasharray="3,2"/>
+                        <text x="85" y="190" text-anchor="middle" font-size="10" fill="currentColor">Vérifiez les</text>
+                        <text x="85" y="200" text-anchor="middle" font-size="10" fill="currentColor">connexions</text>
+                    </svg>
+                `;
+                return svgContainer;
+            }
+            
+            function createBowlHeightIllustration() {
+                const svgContainer = document.createElement('div');
+                svgContainer.innerHTML = `
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-md mx-auto">
+                        <!-- Base -->
+                        <rect x="100" y="150" width="100" height="20" rx="5" fill="#ddd" stroke="#666" stroke-width="2"/>
+                        
+                        <!-- Column -->
+                        <rect x="140" y="80" width="20" height="70" fill="#ccc" stroke="#666" stroke-width="2"/>
+                        
+                        <!-- Head -->
+                        <path d="M120,80 L180,80 L170,60 L130,60 Z" fill="#bbb" stroke="#666" stroke-width="2"/>
+                        
+                        <!-- Beater -->
+                        <line x1="150" y1="80" x2="150" y2="130" stroke="#888" stroke-width="2"/>
+                        <path d="M140,130 Q150,140 160,130" fill="none" stroke="#888" stroke-width="2"/>
+                        <path d="M140,120 Q150,130 160,120" fill="none" stroke="#888" stroke-width="2"/>
+                        
+                        <!-- Bowl -->
+                        <ellipse cx="150" cy="140" rx="35" ry="10" fill="#eee" stroke="#666" stroke-width="1"/>
+                        <path d="M115,140 C115,125 125,110 150,110 C175,110 185,125 185,140" fill="none" stroke="#666" stroke-width="1"/>
+                        
+                        <!-- Gap indicator -->
+                        <path d="M160,125 L170,115 L180,125" fill="none" stroke="#ff6b6b" stroke-width="2"/>
+                        <text x="180" y="110" text-anchor="middle" font-size="10" fill="currentColor">Espace</text>
+                        <text x="180" y="122" text-anchor="middle" font-size="10" fill="currentColor">trop grand</text>
+                        
+                        <!-- Adjustment screw -->
+                        <circle cx="150" cy="170" r="8" fill="#aaa" stroke="#666"/>
+                        <line x1="146" y1="166" x2="154" y2="174" stroke="#666" stroke-width="2"/>
+                        <line x1="146" y1="174" x2="154" y2="166" stroke="#666" stroke-width="2"/>
+                        
+                        <!-- Adjustment indicator -->
+                        <path d="M150,180 L150,185" stroke="#666" stroke-width="1"/>
+                        <path d="M145,185 L155,185" stroke="#666" stroke-width="1"/>
+                        <path d="M142,185 L142,190 L158,190 L158,185" stroke="#666" stroke-width="1" fill="none"/>
+                        <text x="150" y="200" text-anchor="middle" font-size="10" fill="currentColor">Vis de réglage</text>
+                    </svg>
+                `;
+                return svgContainer;
+            }
+            
+            function createGenericIllustration() {
+                const svgContainer = document.createElement('div');
+                svgContainer.innerHTML = `
+                    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-md mx-auto">
+                        <!-- KitchenAid mixer simplified -->
+                        <rect x="125" y="150" width="50" height="20" rx="3" fill="#ddd" stroke="#666" stroke-width="2"/>
+                        <rect x="140" y="80" width="20" height="70" fill="#ccc" stroke="#666" stroke-width="2"/>
+                        <path d="M120,80 L180,80 L170,60 L130,60 Z" fill="#bbb" stroke="#666" stroke-width="2"/>
+                        
+                        <ellipse cx="150" cy="160" rx="30" ry="5" fill="#bbb" stroke="#666" stroke-width="1"/>
+                        
+                        <!-- Bowl -->
+                        <ellipse cx="150" cy="140" rx="30" ry="8" fill="#eee" stroke="#666" stroke-width="1"/>
+                        <path d="M120,140 C120,125 130,110 150,110 C170,110 180,125 180,140" fill="none" stroke="#666" stroke-width="1"/>
+                        
+                        <!-- Warning symbols -->
+                        <circle cx="100" cy="100" r="15" fill="#ff6b6b" stroke="#333"/>
+                        <text x="100" y="105" text-anchor="middle" font-size="15" fill="white" font-weight="bold">!</text>
+                        
+                        <circle cx="200" cy="100" r="15" fill="#ff6b6b" stroke="#333"/>
+                        <text x="200" y="105" text-anchor="middle" font-size="15" fill="white" font-weight="bold">?</text>
+                        
+                        <!-- Service icon -->
+                        <circle cx="150" cy="30" r="15" fill="#5D5CDE" stroke="#333"/>
+                        <path d="M145,30 L155,30 M150,25 L150,35" stroke="white" stroke-width="2"/>
+                        <path d="M143,23 L157,37 M143,37 L157,23" stroke="white" stroke-width="1"/>
+                        
+                        <!-- Text -->
+                        <text x="150" y="180" text-anchor="middle" font-size="12" fill="currentColor">Contactez le service client</text>
+                        <text x="150" y="195" text-anchor="middle" font-size="12" fill="currentColor">pour une assistance spécialisée</text>
+                    </svg>
+                `;
+                return svgContainer;
+            }
+            
+            // Initialize the app
+            init();
+        });
+    </script>
+
+
+</body></html>
