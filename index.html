@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="fr"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assistant Réparation KitchenAid</title>
@@ -116,6 +118,13 @@
             margin: 0 auto;
             display: block;
         }
+        
+        .svg-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 150px;
+        }
     </style>
 </head>
 <body>
@@ -143,13 +152,13 @@
                     <div class="card p-4 cursor-pointer model-card" data-model="artisan">
                         <div class="svg-container" style="height: 150px;">
                             <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" class="model-image">
-                                <path d="M80,130 L120,130 L125,50 L115,40 C115,40 105,35 100,35 C95,35 85,40 85,40 L75,50 Z" fill="#ccc" stroke="#333" stroke-width="2"></path>
-                                <ellipse cx="100" cy="35" rx="20" ry="5" fill="#ddd" stroke="#333" stroke-width="1"></ellipse>
-                                <path d="M75,50 C60,60 60,80 80,100" fill="none" stroke="#333" stroke-width="2"></path>
-                                <path d="M125,50 C140,60 140,80 120,100" fill="none" stroke="#333" stroke-width="2"></path>
-                                <rect x="85" y="80" width="30" height="20" rx="5" fill="#eee" stroke="#333" stroke-width="1"></rect>
-                                <circle cx="130" cy="70" r="10" fill="#ddd" stroke="#333" stroke-width="1"></circle>
-                                <path d="M130,60 L135,40 L145,40 L140,60 Z" fill="#ddd" stroke="#333" stroke-width="1"></path>
+                                <path d="M80,130 L120,130 L125,50 L115,40 C115,40 105,35 100,35 C95,35 85,40 85,40 L75,50 Z" fill="#ccc" stroke="#333" stroke-width="2"/>
+                                <ellipse cx="100" cy="35" rx="20" ry="5" fill="#ddd" stroke="#333" stroke-width="1"/>
+                                <path d="M75,50 C60,60 60,80 80,100" fill="none" stroke="#333" stroke-width="2"/>
+                                <path d="M125,50 C140,60 140,80 120,100" fill="none" stroke="#333" stroke-width="2"/>
+                                <rect x="85" y="80" width="30" height="20" rx="5" fill="#eee" stroke="#333" stroke-width="1"/>
+                                <circle cx="130" cy="70" r="10" fill="#ddd" stroke="#333" stroke-width="1"/>
+                                <path d="M130,60 L135,40 L145,40 L140,60 Z" fill="#ddd" stroke="#333" stroke-width="1"/>
                             </svg>
                         </div>
                         <h3 class="text-lg font-medium text-center mt-2">Artisan</h3>
@@ -158,13 +167,13 @@
                     <div class="card p-4 cursor-pointer model-card" data-model="classic">
                         <div class="svg-container" style="height: 150px;">
                             <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" class="model-image">
-                                <path d="M85,130 L115,130 L120,55 L110,45 C110,45 105,40 100,40 C95,40 90,45 90,45 L80,55 Z" fill="#ccc" stroke="#333" stroke-width="2"></path>
-                                <ellipse cx="100" cy="40" rx="15" ry="4" fill="#ddd" stroke="#333" stroke-width="1"></ellipse>
-                                <path d="M80,55 C65,65 65,85 85,105" fill="none" stroke="#333" stroke-width="2"></path>
-                                <path d="M120,55 C135,65 135,85 115,105" fill="none" stroke="#333" stroke-width="2"></path>
-                                <rect x="90" y="85" width="20" height="15" rx="4" fill="#eee" stroke="#333" stroke-width="1"></rect>
-                                <circle cx="125" cy="75" r="8" fill="#ddd" stroke="#333" stroke-width="1"></circle>
-                                <path d="M125,67 L130,47 L135,47 L130,67 Z" fill="#ddd" stroke="#333" stroke-width="1"></path>
+                                <path d="M80,130 L120,130 L125,50 L115,40 C115,40 105,35 100,35 C95,35 85,40 85,40 L75,50 Z" fill="#ccc" stroke="#333" stroke-width="2"/>
+                                <ellipse cx="100" cy="35" rx="20" ry="5" fill="#ddd" stroke="#333" stroke-width="1"/>
+                                <path d="M75,50 C60,60 60,80 80,100" fill="none" stroke="#333" stroke-width="2"/>
+                                <path d="M125,50 C140,60 140,80 120,100" fill="none" stroke="#333" stroke-width="2"/>
+                                <rect x="85" y="80" width="30" height="20" rx="5" fill="#eee" stroke="#333" stroke-width="1"/>
+                                <circle cx="130" cy="70" r="10" fill="#ddd" stroke="#333" stroke-width="1"/>
+                                <path d="M130,60 L135,40 L145,40 L140,60 Z" fill="#ddd" stroke="#333" stroke-width="1"/>
                             </svg>
                         </div>
                         <h3 class="text-lg font-medium text-center mt-2">Classic</h3>
@@ -173,13 +182,13 @@
                     <div class="card p-4 cursor-pointer model-card" data-model="heavy-duty">
                         <div class="svg-container" style="height: 150px;">
                             <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" class="model-image">
-                                <path d="M75,130 L125,130 L130,45 L120,35 C120,35 110,30 100,30 C90,30 80,35 80,35 L70,45 Z" fill="#ccc" stroke="#333" stroke-width="2"></path>
-                                <ellipse cx="100" cy="30" rx="25" ry="6" fill="#ddd" stroke="#333" stroke-width="1"></ellipse>
-                                <path d="M70,45 C55,55 55,75 75,95" fill="none" stroke="#333" stroke-width="2"></path>
-                                <path d="M130,45 C145,55 145,75 125,95" fill="none" stroke="#333" stroke-width="2"></path>
-                                <rect x="80" y="75" width="40" height="25" rx="6" fill="#eee" stroke="#333" stroke-width="1"></rect>
-                                <circle cx="135" cy="65" r="12" fill="#ddd" stroke="#333" stroke-width="1"></circle>
-                                <path d="M135,53 L140,33 L150,33 L145,53 Z" fill="#ddd" stroke="#333" stroke-width="1"></path>
+                                <path d="M80,130 L120,130 L125,50 L115,40 C115,40 105,35 100,35 C95,35 85,40 85,40 L75,50 Z" fill="#ccc" stroke="#333" stroke-width="2"/>
+                                <ellipse cx="100" cy="35" rx="20" ry="5" fill="#ddd" stroke="#333" stroke-width="1"/>
+                                <path d="M75,50 C60,60 60,80 80,100" fill="none" stroke="#333" stroke-width="2"/>
+                                <path d="M125,50 C140,60 140,80 120,100" fill="none" stroke="#333" stroke-width="2"/>
+                                <rect x="85" y="80" width="30" height="20" rx="5" fill="#eee" stroke="#333" stroke-width="1"/>
+                                <circle cx="130" cy="70" r="10" fill="#ddd" stroke="#333" stroke-width="1"/>
+                                <path d="M130,60 L135,40 L145,40 L140,60 Z" fill="#ddd" stroke="#333" stroke-width="1"/>
                             </svg>
                         </div>
                         <h3 class="text-lg font-medium text-center mt-2">Heavy Duty</h3>
@@ -190,16 +199,13 @@
                     <div class="card p-4 cursor-pointer model-card" data-model="mini">
                         <div class="svg-container" style="height: 150px;">
                             <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" class="model-image">
-                                <path d="M90,130 L110,130 L115,65 L105,55 C105,55 102,50 100,50 C98,50 95,55 95,55 L85,65 Z" fill="#ccc" stroke="#333" stroke-width="2"></path>
-                                <ellipse cx="100" cy="50" rx="12" ry="3" fill="#ddd" stroke="#333" stroke-width="1"></ellipse>
-                                <path d="M85,65 C75,75 75,90 90,110" fill="none" stroke="#333" stroke-width="2"></path>
-                                <path d="M115,65 C125,75 125,90 110,110" fill="none" stroke="#333" stroke-width="2"></path>
-                                <rect x="92" y="95" width="16" height="12" rx="3" fill="#eee" stroke="#333" stroke-width="1"></rect>
-                                <circle cx="118" cy="85" r="6" fill="#ddd" stroke="#333" stroke-width="1"></circle>
-                                <path d="M118,79 L122,62 L126,62 L122,79 Z" fill="#ddd" stroke="#333" stroke-width="1"></path>
-                                <!-- Indicateur de taille -->
-                                <path d="M140,70 L140,110" fill="none" stroke="#666" stroke-width="1" stroke-dasharray="2,1"></path>
-                                <text x="150" y="90" font-size="10" text-anchor="middle" fill="currentColor">Compact</text>
+                                <path d="M80,130 L120,130 L125,50 L115,40 C115,40 105,35 100,35 C95,35 85,40 85,40 L75,50 Z" fill="#ccc" stroke="#333" stroke-width="2"/>
+                                <ellipse cx="100" cy="35" rx="20" ry="5" fill="#ddd" stroke="#333" stroke-width="1"/>
+                                <path d="M75,50 C60,60 60,80 80,100" fill="none" stroke="#333" stroke-width="2"/>
+                                <path d="M125,50 C140,60 140,80 120,100" fill="none" stroke="#333" stroke-width="2"/>
+                                <rect x="85" y="80" width="30" height="20" rx="5" fill="#eee" stroke="#333" stroke-width="1"/>
+                                <circle cx="130" cy="70" r="10" fill="#ddd" stroke="#333" stroke-width="1"/>
+                                <path d="M130,60 L135,40 L145,40 L140,60 Z" fill="#ddd" stroke="#333" stroke-width="1"/>
                             </svg>
                         </div>
                         <h3 class="text-lg font-medium text-center mt-2">Mini</h3>
@@ -210,16 +216,13 @@
                     <div class="card p-4 cursor-pointer model-card" data-model="professional">
                         <div class="svg-container" style="height: 150px;">
                             <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" class="model-image">
-                                <path d="M70,130 L130,130 L135,40 L125,30 C125,30 110,25 100,25 C90,25 75,30 75,30 L65,40 Z" fill="#ccc" stroke="#333" stroke-width="2"></path>
-                                <ellipse cx="100" cy="25" rx="28" ry="7" fill="#ddd" stroke="#333" stroke-width="1"></ellipse>
-                                <path d="M65,40 C50,50 50,70 70,95" fill="none" stroke="#333" stroke-width="2"></path>
-                                <path d="M135,40 C150,50 150,70 130,95" fill="none" stroke="#333" stroke-width="2"></path>
-                                <rect x="75" y="70" width="50" height="30" rx="8" fill="#eee" stroke="#333" stroke-width="1"></rect>
-                                <circle cx="138" cy="60" r="14" fill="#ddd" stroke="#333" stroke-width="1"></circle>
-                                <path d="M138,46 L145,26 L155,26 L148,46 Z" fill="#ddd" stroke="#333" stroke-width="1"></path>
-                                <!-- Indicateur Pro -->
-                                <circle cx="165" cy="40" r="10" fill="#C41230" stroke="#333"></circle>
-                                <text x="165" y="43" font-size="8" fill="white" text-anchor="middle">PRO</text>
+                                <path d="M80,130 L120,130 L125,50 L115,40 C115,40 105,35 100,35 C95,35 85,40 85,40 L75,50 Z" fill="#ccc" stroke="#333" stroke-width="2"/>
+                                <ellipse cx="100" cy="35" rx="20" ry="5" fill="#ddd" stroke="#333" stroke-width="1"/>
+                                <path d="M75,50 C60,60 60,80 80,100" fill="none" stroke="#333" stroke-width="2"/>
+                                <path d="M125,50 C140,60 140,80 120,100" fill="none" stroke="#333" stroke-width="2"/>
+                                <rect x="85" y="80" width="30" height="20" rx="5" fill="#eee" stroke="#333" stroke-width="1"/>
+                                <circle cx="130" cy="70" r="10" fill="#ddd" stroke="#333" stroke-width="1"/>
+                                <path d="M130,60 L135,40 L145,40 L140,60 Z" fill="#ddd" stroke="#333" stroke-width="1"/>
                             </svg>
                         </div>
                         <h3 class="text-lg font-medium text-center mt-2">Professional</h3>
@@ -230,17 +233,13 @@
                     <div class="card p-4 cursor-pointer model-card" data-model="commercial">
                         <div class="svg-container" style="height: 150px;">
                             <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" class="model-image">
-                                <path d="M65,130 L135,130 L140,35 L130,25 C130,25 115,20 100,20 C85,20 70,25 70,25 L60,35 Z" fill="#aaa" stroke="#333" stroke-width="2"></path>
-                                <ellipse cx="100" cy="20" rx="30" ry="8" fill="#bbb" stroke="#333" stroke-width="1"></ellipse>
-                                <path d="M60,35 C45,45 45,65 65,90" fill="none" stroke="#333" stroke-width="2"></path>
-                                <path d="M140,35 C155,45 155,65 135,90" fill="none" stroke="#333" stroke-width="2"></path>
-                                <rect x="70" y="65" width="60" height="35" rx="10" fill="#ccc" stroke="#333" stroke-width="1"></rect>
-                                <circle cx="143" cy="55" r="16" fill="#bbb" stroke="#333" stroke-width="1"></circle>
-                                <path d="M143,39 L150,19 L160,19 L153,39 Z" fill="#bbb" stroke="#333" stroke-width="1"></path>
-                                <!-- Base renforcée -->
-                                <rect x="75" y="120" width="50" height="10" rx="2" fill="#888" stroke="#333"></rect>
-                                <text x="165" y="70" font-size="10" fill="currentColor" text-anchor="middle">Usage</text>
-                                <text x="165" y="82" font-size="10" fill="currentColor" text-anchor="middle">intensif</text>
+                                <path d="M80,130 L120,130 L125,50 L115,40 C115,40 105,35 100,35 C95,35 85,40 85,40 L75,50 Z" fill="#ccc" stroke="#333" stroke-width="2"/>
+                                <ellipse cx="100" cy="35" rx="20" ry="5" fill="#ddd" stroke="#333" stroke-width="1"/>
+                                <path d="M75,50 C60,60 60,80 80,100" fill="none" stroke="#333" stroke-width="2"/>
+                                <path d="M125,50 C140,60 140,80 120,100" fill="none" stroke="#333" stroke-width="2"/>
+                                <rect x="85" y="80" width="30" height="20" rx="5" fill="#eee" stroke="#333" stroke-width="1"/>
+                                <circle cx="130" cy="70" r="10" fill="#ddd" stroke="#333" stroke-width="1"/>
+                                <path d="M130,60 L135,40 L145,40 L140,60 Z" fill="#ddd" stroke="#333" stroke-width="1"/>
                             </svg>
                         </div>
                         <h3 class="text-lg font-medium text-center mt-2">Commercial</h3>
@@ -459,6 +458,521 @@
                             <p class="mt-3">La lubrification est généralement recommandée tous les 2 à 5 ans selon l'utilisation. Pour les robots professionnels ou à usage intensif, une lubrification plus fréquente peut être nécessaire. Utilisez uniquement de la graisse alimentaire approuvée pour les robots KitchenAid.</p>
                         </div>
                     </div>
+                    
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Comment changer les accessoires sans endommager mon robot ?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <p class="mb-3">Pour changer les accessoires de votre robot KitchenAid en toute sécurité :</p>
+                            <ol class="list-decimal pl-5 space-y-2">
+                                <li>Assurez-vous que le robot est éteint et débranché avant de changer les accessoires.</li>
+                                <li>Inclinez la tête du robot vers l'arrière ou relevez le bol selon votre modèle.</li>
+                                <li>Pour retirer un accessoire, poussez-le vers le haut et tournez-le vers la gauche pour le désengager de la broche.</li>
+                                <li>Pour installer un nouvel accessoire, alignez la fente de l'accessoire avec la goupille sur l'arbre du batteur.</li>
+                                <li>Poussez l'accessoire vers le haut et tournez-le vers la droite pour le verrouiller en place.</li>
+                                <li>N'utilisez jamais la force excessive qui pourrait endommager les mécanismes.</li>
+                                <li>Assurez-vous que l'accessoire est bien fixé avant d'utiliser le robot.</li>
+                            </ol>
+                            <p class="mt-3"><em>Note</em> : Si vous avez du mal à retirer un accessoire, une serviette humide peut aider à améliorer la prise en main sans endommager les pièces.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Le batteur est bloqué sur mon robot pâtissier, que dois-je faire ?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <p class="mb-3">Si le crochet pétrisseur, le fouet à fils ou le mélangeur (batteur plat) est bloqué sur votre robot pâtissier KitchenAid, ne vous inquiétez pas. Voici comment résoudre ce problème :</p>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Causes possibles :</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Des particules d'aliments peuvent s'accumuler à l'intérieur de la cavité du batteur et se coincer dans l'arbre du batteur.</li>
+                                <li>Si vous passez le batteur au lave-vaisselle, veillez à l'insérer pointe vers le bas pour éviter l'accumulation de résidus.</li>
+                                <li>Ne stockez pas les fouets sur votre robot lorsqu'ils ne sont pas utilisés, car les ingrédients peuvent pénétrer dans la cavité et durcir.</li>
+                            </ul>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Solutions pour retirer un batteur coincé :</h4>
+                            <ol class="list-decimal pl-5 space-y-2">
+                                <li><strong>Utiliser une compresse chaude :</strong>
+                                    <ul class="list-disc pl-5 mt-1">
+                                        <li>Placez un chiffon chaud et humide autour de l'arbre du batteur pendant 10 minutes.</li>
+                                        <li>Réchauffez le chiffon, replacez-le et laissez reposer 1-2 minutes supplémentaires.</li>
+                                        <li>La chaleur dilatera l'aluminium, ce qui pourrait faciliter le retrait.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Utiliser de l'huile minérale :</strong>
+                                    <ul class="list-disc pl-5 mt-1">
+                                        <li>Appliquez une petite quantité d'huile minérale sur l'arbre du batteur, au-dessus du batteur et dans la fente.</li>
+                                        <li>Laissez l'huile reposer plusieurs minutes, puis essayez de retirer le batteur.</li>
+                                        <li>À défaut d'huile minérale, un spray de cuisson à l'huile végétale peut être utilisé (nettoyez bien après usage).</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Après avoir retiré le batteur :</h4>
+                            <ol class="list-decimal pl-5 space-y-2">
+                                <li>Faites tremper le batteur dans de l'eau chaude savonneuse.</li>
+                                <li>Nettoyez soigneusement la cavité du batteur, en utilisant une brochette de bois pour éliminer les résidus.</li>
+                                <li>Vous pouvez appliquer un peu d'huile minérale sur la cavité avant de réinstaller le batteur.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Le bol mélangeur est bloqué, pouvez-vous m'aider ?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <p class="mb-3">Si le bol de votre robot pâtissier KitchenAid est bloqué et ne se détache pas facilement, ne vous inquiétez pas. Il existe plusieurs techniques pour résoudre ce problème.</p>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Cause principale :</h4>
+                            <p>Ce problème survient souvent après avoir préparé des recettes à pâte dense (pain, pâte à biscuits épaisse) pendant plusieurs minutes. La force du mouvement planétaire peut créer une adhérence très forte entre le bol et le socle du robot.</p>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Solutions pour débloquer le bol :</h4>
+                            <ol class="list-decimal pl-5 space-y-2">
+                                <li><strong>Utiliser une compresse chaude :</strong>
+                                    <ul class="list-disc pl-5 mt-1">
+                                        <li>Placez un chiffon chaud et humide autour du bas du bol pendant 10 minutes.</li>
+                                        <li>Réchauffez le chiffon après 10 minutes, replacez-le et laissez reposer 1-2 minutes supplémentaires.</li>
+                                        <li>La chaleur dilatera l'acier inoxydable, ce qui facilite le dégagement du bol.</li>
+                                        <li>Essayez ensuite de déverrouiller et retirer le bol avec un léger mouvement de rotation.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Appliquer de l'huile minérale :</strong>
+                                    <ul class="list-disc pl-5 mt-1">
+                                        <li>Appliquez une petite quantité d'huile minérale sur le fond du bol, près de la rainure où il se fixe au socle.</li>
+                                        <li>Laissez l'huile pénétrer pendant quelques minutes pour lubrifier la zone.</li>
+                                        <li>À défaut d'huile minérale, un spray de cuisson à l'huile végétale peut être utilisé.</li>
+                                        <li>Si vous utilisez de l'huile végétale, nettoyez bien le socle après avoir retiré le bol pour éviter l'accumulation collante.</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                            
+                            <h4 class="font-medium mt-4 mb-2">En dernier recours :</h4>
+                            <p>Si les méthodes ci-dessus ne fonctionnent pas, vous pouvez essayer cette technique :</p>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Enveloppez le bol dans une serviette épaisse pour le protéger.</li>
+                                <li>Tapotez très doucement sur la poignée du bol avec un maillet en caoutchouc (jamais avec un outil métallique).</li>
+                                <li>Combinez cette technique avec une légère rotation pour libérer le bol.</li>
+                            </ul>
+                            
+                            <p class="mt-4 text-sm italic">Pour éviter ce problème à l'avenir, nettoyez régulièrement la zone de fixation du bol et appliquez occasionnellement une fine couche d'huile minérale sur le mécanisme de verrouillage.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Pourquoi des ingrédients secs sortent-ils du bol ?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <p class="mb-3">Si votre robot pâtissier KitchenAid projette des ingrédients secs hors du bol pendant l'utilisation, plusieurs solutions simples existent pour résoudre ce problème courant.</p>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Solutions principales :</h4>
+                            
+                            <ol class="list-decimal pl-5 space-y-3">
+                                <li><strong>Utilisez le couvercle verseur/protecteur :</strong>
+                                    <ul class="list-disc pl-5 mt-1">
+                                        <li>Ce couvercle remplit une double fonction : il permet de verser proprement les ingrédients par la goulotte et empêche les projections pendant le mélange.</li>
+                                        <li>Ce couvercle est fourni avec de nombreux modèles de robots KitchenAid.</li>
+                                        <li>Il se pose simplement sur le dessus du bol pendant l'utilisation.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Si vous n'avez pas de couvercle, vous pouvez en acheter un selon votre modèle :</strong>
+                                    <ul class="list-disc pl-5 mt-1">
+                                        <li>Pour les robots de 3,3 L : Couvercle verseur/protecteur 5KSM35PS</li>
+                                        <li>Pour les robots de 4,3 L et 4,8 L : Couvercle verseur/protecteur 5KN1PS (compatible avec les robots à tête inclinable)</li>
+                                        <li>Pour les robots de 6,9 L : Couvercle verseur/protecteur 5K7PS</li>
+                                    </ul>
+                                    <p class="text-sm italic mt-1">Note : Ces couvercles ne sont pas compatibles avec les bols en verre, en céramique ou en métal spécial (texturés, matelassés ou martelés).</p>
+                                </li>
+                            </ol>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Utilisez la fonction de démarrage progressif :</h4>
+                            <p>Si vous préparez souvent des recettes avec beaucoup d'ingrédients secs (comme du pain) :</p>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Certains modèles sont équipés d'une fonction de "démarrage progressif" qui permet au robot de démarrer lentement et d'augmenter progressivement jusqu'à la vitesse sélectionnée.</li>
+                                <li>Cette fonction évite efficacement les projections de farine et d'autres ingrédients secs.</li>
+                                <li>Certains modèles disposent également d'une option vitesse 1/2 ou "d'incorporation" particulièrement utile pour intégrer les ingrédients secs.</li>
+                            </ul>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Conseils supplémentaires :</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Commencez toujours à la vitesse la plus basse pour incorporer les ingrédients secs.</li>
+                                <li>Ajoutez les ingrédients secs progressivement plutôt qu'en une seule fois.</li>
+                                <li>Si possible, ajoutez les ingrédients secs lorsque le robot est en pause.</li>
+                                <li>Les couvercles verseurs/protecteurs KitchenAid sont en plastique durable et passent au lave-vaisselle.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Comment régler la broche du col de mon robot pâtissier à tête inclinable ?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <p class="mb-3">Si la tête de votre robot pâtissier KitchenAid tressaute ou oscille pendant l'utilisation, ou si la broche du col est desserrée ou est complètement sortie, voici comment procéder.</p>
+                            
+                            <h4 class="font-medium mt-4 mb-2">À propos de la broche du col :</h4>
+                            <p>La broche argentée maintient la tête du robot pâtissier sur la base du robot pâtissier à tête inclinable. Si elle se desserre, vous devez la resserrer pour éviter que la tête tressaute ou oscille pendant l'utilisation.</p>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Comment identifier la broche :</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>C'est une broche métallique argentée qui pénètre entièrement dans le col de tous les robots pâtissiers à tête inclinable.</li>
+                                <li>Les extrémités arrondies de la broche sont visibles de chaque côté du col (à la jonction entre la tête inclinable et le socle).</li>
+                            </ul>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Si la broche est desserrée mais toujours en place :</h4>
+                            <ol class="list-decimal pl-5 space-y-2">
+                                <li>Débranchez d'abord votre robot pâtissier.</li>
+                                <li>Placez le robot sur une surface stable et bien éclairée.</li>
+                                <li>Localisez la broche argentée sur le col du robot.</li>
+                                <li>Si nécessaire, repoussez délicatement la broche en place pour qu'elle soit bien centrée.</li>
+                                <li>Vérifiez s'il y a une vis de fixation qui maintient la broche en place et resserrez-la avec un tournevis approprié.</li>
+                                <li>Testez le mouvement de la tête du robot pour vous assurer qu'elle est stable et ne tressaute plus.</li>
+                            </ol>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Si la broche est complètement sortie :</h4>
+                            <p>Cette opération est plus délicate et peut nécessiter deux personnes :</p>
+                            <ol class="list-decimal pl-5 space-y-2">
+                                <li>Une personne doit maintenir la tête du robot précisément alignée avec le socle.</li>
+                                <li>L'autre personne doit réinsérer la broche dans l'ouverture.</li>
+                                <li>Attention : la broche n'est pas entièrement droite, ce qui peut compliquer son insertion.</li>
+                                <li>Une fois la broche insérée, vérifiez qu'elle est bien centrée et fixez-la si nécessaire.</li>
+                            </ol>
+                            
+                            <p class="mt-4 text-sm italic">Note : Si vous n'êtes pas sûr de pouvoir effectuer cette opération vous-même, il est préférable de contacter le service client KitchenAid ou un réparateur agréé pour éviter d'endommager votre appareil.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Mon robot pâtissier émet un bruit/une odeur, est-ce normal ?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <p class="mb-3">Si vous vous inquiétez d'un bruit ou d'une odeur provenant de votre robot pâtissier KitchenAid, voici ce qu'il faut savoir pour distinguer les phénomènes normaux des problèmes potentiels.</p>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Bruits normaux du robot pâtissier :</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Les grands robots pâtissiers (modèles professionnels, heavy duty) peuvent être plus bruyants que les modèles plus compacts en raison de leurs moteurs plus puissants et de leurs engrenages entièrement métalliques.</li>
+                                <li>Si vous utilisiez auparavant un petit robot pâtissier et avez récemment acquis un modèle plus grand, le niveau sonore peut vous sembler plus élevé initialement.</li>
+                                <li>Même des robots pâtissiers de modèle identique peuvent produire des bruits légèrement différents.</li>
+                                <li>Un léger ronronnement ou bourdonnement pendant le fonctionnement est parfaitement normal.</li>
+                            </ul>
+                            
+                            <h4 class="font-medium mt-4 mb-2">À propos des cliquetis :</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Il n'est pas inhabituel d'entendre un cliquetis lors de mélanges intensifs, particulièrement lors du pétrissage de pâtes levées.</li>
+                                <li>Ces cliquetis peuvent être plus prononcés avec les robots pâtissiers de grande capacité.</li>
+                                <li>Un cliquetis léger et occasionnel est généralement normal, surtout au démarrage ou lors du changement de vitesse.</li>
+                                <li>Cependant, des cliquetis forts, persistants ou qui s'intensifient avec le temps peuvent indiquer un problème d'engrenage qui nécessite une vérification.</li>
+                            </ul>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Odeurs suspectes :</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Un robot neuf peut dégager une légère odeur lors des premières utilisations - c'est normal et disparaît généralement après quelques usages.</li>
+                                <li>Une odeur de "brûlé" ou une odeur chimique forte et persistante n'est pas normale.</li>
+                                <li>Si votre robot commence à dégager des odeurs inhabituelles pendant l'utilisation, cessez immédiatement de l'utiliser.</li>
+                                <li>Dans ce cas, débranchez l'appareil et contactez le service client de votre revendeur ou du fabricant.</li>
+                            </ul>
+                            
+                            <p class="mt-4 text-sm italic">Conseil : Si votre robot fait plus de bruit qu'avant, vérifiez si l'accessoire touche le bol ou si la hauteur du batteur nécessite un ajustement. Des bruits inhabituels peuvent également indiquer que votre robot a besoin d'être lubrifié, surtout s'il est utilisé fréquemment ou s'il est ancien.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Que dois-je faire si mon robot pâtissier cesse de fonctionner ?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <p class="mb-3">Si votre robot pâtissier KitchenAid cesse soudainement de fonctionner, ne paniquez pas. Il existe plusieurs vérifications que vous pouvez effectuer avant de contacter le service client.</p>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Vérifications basiques (à faire en premier) :</h4>
+                            <ol class="list-decimal pl-5 space-y-2">
+                                <li><strong>Vérifiez l'alimentation électrique :</strong>
+                                    <ul class="list-disc pl-5 mt-1">
+                                        <li>Assurez-vous que le robot est correctement branché à une prise électrique.</li>
+                                        <li>Testez la prise en y branchant un autre appareil pour vérifier qu'elle fonctionne.</li>
+                                        <li>Vérifiez que le cordon d'alimentation n'est pas endommagé (fissures, coupures).</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Vérifiez si le bol est correctement installé :</strong>
+                                    <ul class="list-disc pl-5 mt-1">
+                                        <li>Certains modèles disposent d'un interrupteur de sécurité qui empêche le robot de fonctionner si le bol n'est pas correctement positionné.</li>
+                                        <li>Retirez le bol puis replacez-le en vous assurant qu'il est bien verrouillé en position.</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Protection contre la surchauffe :</h4>
+                            <p>Les robots KitchenAid sont équipés d'une protection thermique qui arrête automatiquement l'appareil en cas de surchauffe :</p>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Si vous avez utilisé le robot intensivement ou sur une longue période, il peut s'être mis en sécurité thermique.</li>
+                                <li>Dans ce cas, placez le sélecteur de vitesse en position "0" (arrêt), débranchez l'appareil et laissez-le refroidir pendant 15 à 30 minutes.</li>
+                                <li>Une fois refroidi, rebranchez-le et essayez de le redémarrer.</li>
+                                <li>Si le problème persiste après le refroidissement, il peut s'agir d'un autre problème.</li>
+                            </ul>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Vérifications avancées :</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li><strong>Vérifiez le fusible/disjoncteur :</strong> Assurez-vous que le fusible correspondant à la prise n'a pas sauté ou que le disjoncteur n'a pas été déclenché.</li>
+                                <li><strong>Vérifiez les vitesses :</strong> Testez différentes vitesses, car parfois une position spécifique du sélecteur peut être défectueuse.</li>
+                                <li><strong>Contrôlez les engrenages :</strong> Si vous entendez le moteur tourner mais que l'accessoire ne bouge pas, il peut y avoir un problème avec les engrenages internes.</li>
+                            </ul>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Quand contacter le service client :</h4>
+                            <p>Si aucune des vérifications ci-dessus ne résout le problème, contactez le service client KitchenAid ou un centre de service agréé, surtout si :</p>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Le robot est encore sous garantie.</li>
+                                <li>Vous avez remarqué des odeurs de brûlé avant l'arrêt.</li>
+                                <li>Le robot fait des bruits inhabituels juste avant de s'arrêter.</li>
+                                <li>Vous observez des signes visibles de dommage (fumée, étincelles, déformation).</li>
+                            </ul>
+                            
+                            <p class="mt-4 text-sm italic">Important : N'essayez jamais de démonter ou de réparer vous-même les composants électriques internes du robot, car cela pourrait annuler votre garantie et présenter des risques de sécurité.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Que dois-je faire si mon robot pâtissier cesse de fonctionner - 2e partie ?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <h4 class="font-medium mt-2 mb-2">Qu'avez-vous mélangé et pendant combien de temps ?</h4>
+                            <p class="mb-3">Le robot pâtissier multifonction peut chauffer pendant l'utilisation. Lors du mélange de préparations épaisses pendant une période prolongée, il est possible que le dessus de l'appareil soit trop chaud pour que vous puissiez le toucher. C'est normal.</p>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Prépariez-vous quelque chose avec de la vapeur ?</h4>
+                            <p class="mb-3">Lorsque vous mélangez une préparation impliquant de la vapeur, celle-ci peut se condenser sur le circuit imprimé du robot pâtissier, interrompant le flux d'électricité et provoquant l'arrêt du moteur. Une fois la vapeur dissipée, l'appareil doit normalement s'allumer à nouveau (patientez environ 3 minutes).</p>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Si votre robot pâtissier a un dysfonctionnement ou ne réagit pas, vérifiez les points suivants :</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Le robot pâtissier est-il branché ?</li>
+                                <li>Est-ce que le fusible du circuit électrique du robot pâtissier fonctionne normalement ? Si vous possédez un boîtier de disjoncteurs, assurez-vous que le circuit est fermé.</li>
+                                <li>Mettez le robot pâtissier multifonction hors tension pendant 10 à 15 secondes, puis remettez-le sous tension. Si le robot pâtissier ne démarre toujours pas, laissez-le refroidir 30 minutes avant de le remettre en marche.</li>
+                                <li>Si les conseils ci-dessus ne résolvent pas le problème, contactez le service client de votre revendeur ou celui du fabricant.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Pourquoi le robot pâtissier vibre-t-il ou la tête oscille-t-elle ?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <p class="mb-3">La tête vibre ou tressaute lorsque vous utilisez votre robot pâtissier multifonction ? Découvrez nos conseils sur les vibrations du robot pâtissier ici...</p>
+                            
+                            <p class="mb-3">Le robot pâtissier multifonction KitchenAid est robuste et conçu pour rester immobile pendant l'utilisation. S'il bouge, voici quelques points à vérifier :</p>
+                            
+                            <h4 class="font-medium mt-4 mb-2">La tête du robot pâtissier est-elle verrouillée en position ?</h4>
+                            <p class="mb-3">Si le batteur est trop haut, la tête du robot pâtissier ne peut pas se verrouiller en position.</p>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Le batteur racle-t-il le fond du bol ?</h4>
+                            <p class="mb-3">Si le batteur est trop bas, il pousse le bol et fait tressauter la tête du robot pâtissier.</p>
+                            
+                            <h4 class="font-medium mt-4 mb-2">La broche argentée à la base du robot pâtissier est-elle desserrée ou saillante ?</h4>
+                            <p class="mb-3">Si la broche argentée du col est desserrée, la tête du robot pâtissier peut tressauter.</p>
+                            
+                            <p class="mt-3">Si le problème persiste malgré ces vérifications, contactez le service client de votre revendeur ou du fabricant.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Pourquoi de l'huile fuit-elle de mon robot pâtissier ?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <p class="mb-3">De l'huile fuit de votre robot pâtissier multifonction KitchenAid et cela vous inquiète ? Si vous rencontrez ce problème, découvrez comment procéder ici...</p>
+                            
+                            <p class="mb-3">Tout au long du cycle de vie d'un robot pâtissier multifonction KitchenAid, vous rencontrerez parfois les situations suivantes :</p>
+                            
+                            <ul class="list-disc pl-5 space-y-2 mb-3">
+                                <li>Quelques gouttes d'huile au fond du bol</li>
+                                <li>De l'huile s'écoulant de l'arbre du batteur</li>
+                                <li>Une fuite d'huile au niveau des fentes du levier de verrouillage ou de commande de vitesse sur un robot pâtissier qui a été tourné sur le côté pendant le transport ou le stockage.</li>
+                            </ul>
+                            
+                            <p class="mb-3">La raison en est que le robot pâtissier est rempli d'assez de graisse solide pour toute sa durée de vie. Lorsque vous utilisez le robot pâtissier, la graisse est envoyée autour des engrenages pour les lubrifier. Au fil du temps, une partie de l'huile peut se séparer de la graisse solide et se déposer naturellement au point le plus bas de la tête du moteur, juste au-dessus de l'arbre du batteur si le robot pâtissier est à la verticale, ou les fentes du levier de commande de vitesse ou de verrouillage s'il est sur le côté.</p>
+                            
+                            <p class="mb-3">Cette situation est plus susceptible de survenir par temps chaud et si vous n'utilisez pas souvent le robot pâtissier. L'utilisation régulière du robot pâtissier peut empêcher cela... alors planifiez dès maintenant les prochains délices que vous préparerez !</p>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Comment empêcher l'huile de couler du robot pâtissier</h4>
+                            <p class="mb-3">Voici quelques conseils pour empêcher les fuites d'huile sur un robot pâtissier multifonction KitchenAid :</p>
+                            
+                            <ul class="list-disc pl-5 space-y-2 mb-3">
+                                <li>De temps en temps, démarrez le robot pâtissier sans aucun ingrédient dans le bol.</li>
+                                <li>Si vous n'avez pas utilisé votre robot pâtissier depuis un certain temps, vous pouvez le régler à la vitesse 10 et le laisser tourner 2 minutes avant de l'utiliser. Après ces 2 minutes, arrêtez le robot pâtissier et essuyez tout excédent d'huile autour de l'arbre.</li>
+                                <li>De l'huile peut gicler et tacher vos vêtements au cours de ce processus. Par conséquent, si vous disposez d'un couvercle verseur/protecteur, nous vous conseillons de le fixer au bol pour essayer de réduire ce risque.</li>
+                                <li>L'utilisation excessive d'un robot pâtissier et le fait de ne pas le laisser refroidir complètement entre les utilisations peuvent également engendrer de tels problèmes.</li>
+                            </ul>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Les problèmes persistent ?</h4>
+                            <p class="mb-3">Si aucune de ces méthodes ne fonctionne, la seule façon de remédier définitivement à ce problème est de faire réparer le robot pâtissier (un réparateur retire toute la graisse usagée, injecte de la graisse neuve et remplace le joint).</p>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Remarques concernant les fuites de graisse</h4>
+                            <p class="mb-3">Soyez assuré que :</p>
+                            
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>La graisse est de qualité alimentaire et approuvée pour un contact accidentel avec les aliments préparés dans le robot pâtissier, bien qu'elle puisse décolorer les glaçages de couleur claire ou les purées de pommes de terre.</li>
+                                <li>Une fuite d'huile n'endommage pas le robot pâtissier.</li>
+                                <li>Il n'est pas nécessaire d'ajouter de l'huile dans le robot pâtissier pour un entretien régulier.</li>
+                                <li>À moins que le robot pâtissier ait perdu beaucoup d'huile, cela n'indique en général aucun problème.</li>
+                                <li>Si le robot pâtissier émet un bruit « normal » et ne grince pas, vous pouvez continuer à l'utiliser.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Pourquoi la tête du robot pâtissier est-elle chaude ?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <p class="mb-3">Il est tout à fait normal que la tête du robot chauffe. Voici quelques-unes des raisons pour lesquelles elle a pu chauffer...</p>
+                            
+                            <p class="mb-3">Il peut arriver que la tête du robot pâtissier soit chaude et que vous ne puissiez pas la toucher confortablement. Ne vous inquiétez pas. C'est normal.</p>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Voici les raisons pour lesquelles la tête du robot pâtissier peut être chaude</h4>
+                            
+                            <h5 class="font-medium mt-3 mb-1">Le robot pâtissier a-t-il été utilisé pendant une longue période ?</h5>
+                            <p class="mb-3">Mélanger pendant de longues périodes (succession de lots de pâte, de pâte à pain, etc.) peut faire chauffer la tête du robot pâtissier.</p>
+                            
+                            <h5 class="font-medium mt-3 mb-1">Le robot pâtissier a-t-il été surchargé ?</h5>
+                            <p class="mb-3">Dépasser la capacité maximale d'ingrédients du robot pâtissier peut faire chauffer sa tête.</p>
+                            
+                            <h5 class="font-medium mt-3 mb-1">Avez-vous utilisé les vitesses recommandées ?</h5>
+                            <p class="mb-3">Si vous n'utilisez pas les temps et les vitesses recommandés dans le manuel d'utilisation des accessoires du robot pâtissier, qui garantissent des performances optimales, celui-ci peut chauffer. Grâce à l'action de mélange à mouvement planétaire unique du robot pâtissier KitchenAid, un mélange en profondeur requiert environ la moitié du temps indiqué dans une recette.</p>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Autres remarques :</h4>
+                            <ul class="list-disc pl-5 space-y-2 mb-3">
+                                <li>Pétrir 2 minutes avec un robot pâtissier KitchenAid équivaut à pétrir à la main pendant 10 - 12 minutes. Donc pensez à adapter le temps de pétrissage pour vos recettes préférées.</li>
+                                <li>La vitesse 2 est la seule vitesse à utiliser pour les pâtes levées.</li>
+                                <li>L'utilisation fréquente d'une vitesse supérieure ou inférieure peut nuire au moteur du robot pâtissier.</li>
+                            </ul>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Combien de temps faut-il à la tête du robot pâtissier pour refroidir ?</h4>
+                            <p class="mb-3">Si le robot pâtissier a chauffé à tel point que vous ne pouvez pas le toucher facilement, laissez-le reposer et refroidir complètement, à l'intérieur comme à l'extérieur, avant de reprendre le mélange. Il faut parfois 30 - 45 minutes pour que l'extérieur et le moteur refroidissent complètement. Si vous continuez à utiliser le robot pâtissier et/ou ses accessoires alors qu'il est très chaud, vous risquez d'endommager votre appareil. Lorsqu'il a complètement refroidi, vous pouvez à nouveau utiliser le robot pâtissier en toute sécurité.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Comment changer les pièces usées de mon robot KitchenAid?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <p class="mb-3">Le remplacement de pièces usées sur votre robot KitchenAid peut prolonger considérablement sa durée de vie. Voici un guide pour les réparations les plus courantes:</p>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Remplacement des engrenages</h4>
+                            <ol class="list-decimal pl-5 space-y-2">
+                                <li><strong>Préparation</strong> : Débranchez le robot et placez-le sur une surface protégée. Prévoyez un récipient pour les petites pièces.</li>
+                                <li><strong>Accès aux engrenages</strong> : Retirez les vis de fixation du couvercle supérieur (généralement entre 3 et 6 vis selon le modèle).</li>
+                                <li><strong>Retrait des engrenages</strong> : Documentez soigneusement la position des engrenages avant démontage (photos). Retirez l'engrenage planétaire principal et inspectez l'engrenage à vis sans fin et l'engrenage en nylon.</li>
+                                <li><strong>Remplacement</strong> : Remplacez les engrenages usés ou endommagés. L'engrenage en nylon (parfois appelé "worm gear") est la pièce qui s'use le plus souvent.</li>
+                                <li><strong>Lubrification</strong> : Appliquez de la graisse alimentaire sur les engrenages avant remontage.</li>
+                                <li><strong>Remontage</strong> : Réinstallez tous les composants dans l'ordre inverse du démontage et serrez les vis correctement.</li>
+                            </ol>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Remplacement des balais de carbone du moteur</h4>
+                            <ol class="list-decimal pl-5 space-y-2">
+                                <li>Les balais de carbone sont des pièces d'usure normale qui peuvent nécessiter un remplacement après plusieurs années d'utilisation.</li>
+                                <li>Les signes de balais usés incluent un fonctionnement intermittent, des étincelles visibles ou un moteur qui ne démarre pas.</li>
+                                <li>Pour accéder aux balais : débranchez le robot, retirez le couvercle arrière en dévissant les vis qui le maintiennent.</li>
+                                <li>Les balais sont généralement maintenus par des clips ou des vis. Retirez-les un par un et remplacez-les par des neufs.</li>
+                                <li>Assurez-vous que les nouveaux balais sont du modèle exact correspondant à votre robot.</li>
+                            </ol>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Achat de pièces de rechange</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Pièces officielles KitchenAid : disponibles sur le site du fabricant, chez les revendeurs agréés ou auprès du service client.</li>
+                                <li>Pièces alternatives : disponibles en ligne, mais assurez-vous de leur compatibilité avec votre modèle spécifique.</li>
+                                <li>Pour commander des pièces, vous aurez besoin du numéro de modèle exact (généralement sous le socle du robot).</li>
+                            </ul>
+                            
+                            <h4 class="font-medium mt-4 mb-2">Précautions importantes</h4>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Les réparations non autorisées peuvent annuler votre garantie si le robot est encore sous garantie.</li>
+                                <li>Si vous n'êtes pas à l'aise avec les réparations mécaniques, consultez un réparateur professionnel.</li>
+                                <li>Utilisez uniquement de la graisse alimentaire approuvée pour les robots KitchenAid lors des réparations.</li>
+                                <li>Gardez toutes les vis et petites pièces organisées pendant la réparation.</li>
+                                <li>Prenez des photos à chaque étape pour faciliter le remontage.</li>
+                            </ul>
+                            
+                            <p class="mt-4 text-sm italic">Conseil : De nombreux tutoriels vidéo détaillés sont disponibles en ligne pour guider les réparations spécifiques à votre modèle exact de robot KitchenAid.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Comment contacter le Service Clientèle de KitchenAid ?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <p class="mb-3">Pour toute question d'ordre général concernant les robots pâtissiers, veuillez appeler le :</p>
+                            
+                            <div class="my-4 flex flex-col items-center">
+                                <p class="text-lg font-semibold">00800 381 04026</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">(numéro gratuit)</p>
+                            </div>
+                            
+                            <div class="my-4 flex flex-col items-center">
+                                <p class="text-lg font-semibold">0800 902 236</p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">(numéro gratuit)</p>
+                            </div>
+                            
+                            <div class="mt-4 p-3 bg-gray-100 dark:bg-gray-700 rounded-lg text-center">
+                                <p class="font-medium">Horaires du service client</p>
+                                <p>Du lundi au vendredi : 09h00 - 18h00</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <button class="faq-btn w-full p-4 flex justify-between items-center text-left" aria-expanded="false">
+                            <span class="font-medium">Où puis-je trouver le modèle et le numéro de série du robot pâtissier ?</span>
+                            <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-content hidden px-4 pb-4">
+                            <p class="mb-3">[En attente de votre réponse]</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="mt-6">
@@ -466,7 +980,54 @@
                 </div>
             </div>
                 
-            <!-- Step 5: Additional Help -->
+            <!-- Step 5: AI Assistant -->
+            <div id="step-ai-assistant" class="step mb-8 hidden">
+                <h2 class="text-2xl font-semibold mb-4">Assistant IA KitchenAid</h2>
+                <p class="mb-4">Posez une question spécifique à notre assistant IA pour obtenir de l'aide personnalisée avec votre robot KitchenAid.</p>
+                
+                <div class="card p-6 mb-6">
+                    <form id="ai-assistant-form" class="mb-4">
+                        <div class="flex flex-col gap-4">
+                            <textarea 
+                                id="ai-question" 
+                                class="w-full p-3 border rounded-lg text-base focus:ring-2 focus:ring-kitchenaid-red focus:border-kitchenaid-red dark:bg-gray-700 dark:border-gray-600 dark:text-white" 
+                                placeholder="Ex: Comment puis-je retirer un batteur coincé sur mon Artisan ?" 
+                                rows="3"></textarea>
+                            <div class="flex justify-end">
+                                <button type="submit" id="ask-ai-button" class="btn-primary px-6 py-2 rounded-lg flex items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                    Poser ma question
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <div id="ai-loading" class="hidden text-center py-4">
+                        <div class="loading-spinner"></div>
+                        <p class="mt-2">Notre assistant analyse votre question...</p>
+                    </div>
+                    
+                    <div id="ai-response-container" class="hidden">
+                        <h3 class="text-xl font-medium mb-3">Réponse de l'assistant</h3>
+                        <div id="ai-response" class="prose prose-sm max-w-none dark:prose-invert bg-gray-50 dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 overflow-auto max-h-[350px]">
+                            <!-- AI response will be inserted here -->
+                        </div>
+                    </div>
+                    
+                    <div id="ai-error" class="hidden mt-4 p-4 bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded-lg">
+                        <p>Une erreur est survenue. Veuillez réessayer ou reformuler votre question.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-6 flex flex-wrap gap-2">
+                    <button id="back-from-ai" class="btn-secondary px-6 py-2 rounded-lg">Retour au diagnostic</button>
+                    <button id="clear-ai-response" class="px-6 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 text-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200">Effacer la réponse</button>
+                </div>
+            </div>
+            
+            <!-- Step 6: Additional Help -->
             <div id="step-help" class="step mb-8 hidden">
                 <h2 class="text-2xl font-semibold mb-4">Besoin d'aide supplémentaire?</h2>
                 
@@ -1254,10 +1815,146 @@
                 return svgContainer;
             }
             
+            // AI Assistant functionality
+            const aiAssistantForm = document.getElementById('ai-assistant-form');
+            const aiQuestion = document.getElementById('ai-question');
+            const aiResponse = document.getElementById('ai-response');
+            const aiResponseContainer = document.getElementById('ai-response-container');
+            const aiLoading = document.getElementById('ai-loading');
+            const aiError = document.getElementById('ai-error');
+            const backFromAiBtn = document.getElementById('back-from-ai');
+            const clearAiResponseBtn = document.getElementById('clear-ai-response');
+            
+            // Show AI Assistant section
+            const showAiAssistant = () => {
+                stepDiagnosis.classList.add('hidden');
+                stepModel.classList.add('hidden');
+                stepSymptoms.classList.add('hidden');
+                stepFaq.classList.add('hidden');
+                stepHelp.classList.add('hidden');
+                document.getElementById('step-ai-assistant').classList.remove('hidden');
+            };
+            
+            // Add AI button to diagnosis view
+            const aiDiagnosisButton = document.createElement('button');
+            aiDiagnosisButton.className = 'btn-secondary px-6 py-2 rounded-lg ml-4';
+            aiDiagnosisButton.textContent = 'Poser une question';
+            aiDiagnosisButton.addEventListener('click', showAiAssistant);
+            
+            // Add the button to the diagnosis actions
+            document.querySelector('#step-diagnosis .mt-6').appendChild(aiDiagnosisButton);
+            
+            // Add AI option to model selection screen
+            const aiModelButton = document.createElement('button');
+            aiModelButton.className = 'inline-flex items-center px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-800 transition-colors dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-gray-200 ml-4';
+            aiModelButton.innerHTML = `
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                </svg>
+                Assistant IA
+            `;
+            aiModelButton.addEventListener('click', showAiAssistant);
+            document.querySelector('#step-model .mb-6.text-center').appendChild(aiModelButton);
+            
+            // Handle form submission
+            aiAssistantForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const question = aiQuestion.value.trim();
+                if (!question) return;
+                
+                // Show loading, hide results and errors
+                aiLoading.classList.remove('hidden');
+                aiResponseContainer.classList.add('hidden');
+                aiError.classList.add('hidden');
+                
+                // Prepare a model-specific prompt if a model was selected
+                let contextPrefix = "";
+                if (selectedModel) {
+                    contextPrefix = `Je possède un robot KitchenAid modèle ${selectedModel}. `;
+                }
+                
+                // If symptoms are selected, add them to the context
+                if (selectedSymptoms.length > 0) {
+                    const symptomLabels = {
+                        'bruit-anormal': 'bruits anormaux (grincements, cliquetis)',
+                        'ne-demarre-pas': 'le robot ne démarre pas',
+                        'tete-instable': 'la tête du robot est instable ou tombe',
+                        'accessoire-ne-tourne-pas': "l'accessoire ne tourne pas correctement",
+                        'surchauffe': 'surchauffe du moteur',
+                        'fuite-huile': "fuite d'huile",
+                        'vitesse-irreguliere': 'vitesse irrégulière',
+                        'melange-inadequat': 'mélange inadéquat (ne mélange pas tous les ingrédients)'
+                    };
+                    
+                    const symptomTexts = selectedSymptoms.map(s => symptomLabels[s] || s);
+                    contextPrefix += `J'observe les symptômes suivants : ${symptomTexts.join(', ')}. `;
+                }
+                
+                // Register handler for AI responses
+                const handlerId = 'kitchenaid-assistant-handler-' + Date.now();
+                
+                window.Poe.registerHandler(handlerId, (result) => {
+                    const message = result.responses[0];
+                    
+                    if (message.status === "error") {
+                        aiLoading.classList.add('hidden');
+                        aiError.classList.remove('hidden');
+                        aiError.querySelector('p').textContent = message.statusText || "Une erreur est survenue. Veuillez réessayer ou reformuler votre question.";
+                    } else {
+                        // Show content container if it's hidden
+                        if (aiResponseContainer.classList.contains('hidden')) {
+                            aiResponseContainer.classList.remove('hidden');
+                        }
+                        
+                        // Update the response content
+                        aiResponse.innerHTML = message.content;
+                        
+                        // Hide loading when complete
+                        if (message.status === "complete") {
+                            aiLoading.classList.add('hidden');
+                        }
+                    }
+                });
+                
+                try {
+                    // Send message to Claude with context about the KitchenAid model and symptoms
+                    await window.Poe.sendUserMessage(
+                        `@Claude-3.7-Sonnet ${contextPrefix}${question}`,
+                        {
+                            handler: handlerId,
+                            stream: true,
+                            openChat: false
+                        }
+                    );
+                } catch (error) {
+                    aiLoading.classList.add('hidden');
+                    aiError.classList.remove('hidden');
+                    aiError.querySelector('p').textContent = `Erreur: ${error.message || "Impossible de contacter l'assistant IA."}`;
+                    console.error("Error sending message:", error);
+                }
+            });
+            
+            // Back button functionality
+            backFromAiBtn.addEventListener('click', function() {
+                document.getElementById('step-ai-assistant').classList.add('hidden');
+                if (selectedModel) {
+                    stepDiagnosis.classList.remove('hidden');
+                } else {
+                    stepModel.classList.remove('hidden');
+                }
+            });
+            
+            // Clear response button
+            clearAiResponseBtn.addEventListener('click', function() {
+                aiQuestion.value = '';
+                aiResponseContainer.classList.add('hidden');
+                aiError.classList.add('hidden');
+            });
+            
             // Initialize the app
             init();
         });
     </script>
-
-
-</body></html>
+</body>
+</html>
